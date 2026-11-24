@@ -878,6 +878,24 @@ html{scroll-behavior:smooth}
 .tabs button .mono{display:inline-grid;place-items:center;min-width:26px;height:18px;border-radius:5px;background:rgba(244,246,238,.06);opacity:1!important;color:var(--graph)}
 .tabs button.on .mono{background:var(--lime);color:var(--carbon)}
 @media (max-width:900px){.actp.col .chev{transform:rotate(180deg)}}
+
+/* smaller kit button */
+.kitbtn{gap:9px;padding:6px 12px 6px 6px;border-radius:14px}
+.kit-ic{width:30px;height:30px;border-radius:9px}.kit-ic svg{width:16px;height:16px}
+.kit-tx b{font-size:12.5px}.kit-tx small{font-size:10.5px}
+@media (max-width:900px){.kitbtn{padding:5px 10px 5px 5px}.kit-ic{width:26px;height:26px;border-radius:8px}.kit-ic svg{width:14px;height:14px}.kit-tx b{font-size:11.5px}}
+/* navigation hint */
+.hint{display:none!important}
+.navhint{position:absolute;z-index:12;left:calc(50% + var(--nh-off,0px));bottom:100px;transform:translateX(-50%);display:flex;gap:14px;align-items:center;white-space:nowrap;
+  padding:7px 14px;border-radius:999px;background:rgba(10,12,9,.6);border:1px solid var(--edge);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  font-size:11.5px;color:var(--graph);pointer-events:none;transition:opacity .6s,left .45s cubic-bezier(.2,.8,.2,1)}
+.navhint b{color:var(--pale);font-weight:500}
+.navhint span+span{padding-left:14px;border-left:1px solid rgba(244,246,238,.1)}
+.navhint .nh-m{display:none}
+.navhint.dim{opacity:.45}
+@media (max-width:900px){.navhint{bottom:132px;font-size:10.5px;gap:8px;padding:5px 10px}.navhint span+span{padding-left:8px}.navhint .nh-d{display:none}.navhint .nh-m{display:inline}.navhint span:last-child b:first-child{display:none}}
+@media (max-width:900px){.navhint span:last-child{font-size:0}.navhint span:last-child::after{content:"Tap an agent to open it";font-size:10.5px}}
+@media (max-width:900px){.zoom{bottom:172px}}
 </style>
 
 <div id="boot"><div class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="310.13 0 424.1 429.98"><path fill="#A8E01F" d="M403.97,273.21c0-157.93,72.2-171.56,162.13-171.56,22,0,43.67,1.22,63.66,5.4-18-71.16-83.64-77.69-157.26-98.37-110.31-30.99-151.66,22.86-160.93,132.85-10.24,121.46,35.5,162.73,97.25,175.66-3.16-12.52-4.85-27.03-4.85-43.97Z"/><path fill="#C6FF34" d="M571.86,107.4c-89.93,0-162.12,13.63-162.13,171.56,0,113.31,75.55,118.03,162.13,142.36,110.31,30.99,151.66-22.86,160.93-132.85,13.55-160.8-70.99-181.07-160.93-181.07Z"/></svg><div class="lbl">Assembling your team</div></div></div>
@@ -907,7 +925,7 @@ html{scroll-behavior:smooth}
    <div class="actp-b" id="actpB"></div>
   </aside>
   <button class="kitbtn" id="kitbtn" onclick="openKit()"><span class="kit-ic" id="i-kit"></span><span class="kit-tx"><b>Edit your agent kit</b><small>Growth tier · 9 seniors · 61% capacity</small></span></button>
-  <div class="hint"><span><b>Drag</b> to rotate</span><span><b>Scroll</b> to zoom</span><span><b>Click</b> an agent</span></div>
+  <div class="navhint" id="navhint"><span class="nh-d"><b>Drag</b> to rotate</span><span class="nh-d"><b>Scroll</b> to zoom</span><span class="nh-m"><b>Drag</b> to rotate</span><span class="nh-m"><b>Pinch</b> to zoom</span><span><b>Hover</b> an agent for details · <b>click</b> to open it</span></div>
   <div class="zoom"><button onclick="C3.zoom(.85)" aria-label="Zoom in" id="zin"></button><button onclick="C3.zoom(1.18)" aria-label="Zoom out" id="zout"></button><button onclick="C3.reset()" aria-label="Recenter" id="zre"></button></div>
  </section>
 
@@ -1865,13 +1883,14 @@ function apToggle(force){const p=$('#actp');const col=force!=null?force:!p.class
  try{localStorage.setItem('qq_ap_col',col?'1':'0')}catch(e){}
  apInsets();}
 function apInsets(snap){if(!window.C3||!C3.setInsets)return;const p=$('#actp'),mob=innerWidth<=900;
- const l=(!mob&&!p.classList.contains('col'))?p.offsetWidth+28:0;C3.setInsets(l,mob?52:0,snap);}
+ const l=(!mob&&!p.classList.contains('col'))?p.offsetWidth+28:0;C3.setInsets(l,mob?52:0,snap);$('#navhint').style.setProperty('--nh-off',(l/2)+'px');}
 
 /* ---------- boot ---------- */
 function boot(){
  renderTop();renderStats();
  $('#vbtn').addEventListener('click',toggleVMenu);
  setTimeout(()=>$('#boot').classList.add('off'),900);
+ $('#gl').addEventListener('pointerdown',()=>{const h=$('#navhint');h.classList.add('dim');},{once:true});
  $('#actpChev').innerHTML=I.down;$('#i-kit').innerHTML=I.kit;$('#actpTg').onclick=()=>apToggle();
  let col=innerWidth<=900;try{const v=localStorage.getItem('qq_ap_col');if(v!=null&&innerWidth>900)col=v==='1';}catch(e){}
  $('#actp').classList.toggle('col',col);apRender();setTimeout(()=>apInsets(true),0);setInterval(apTick,7000);
