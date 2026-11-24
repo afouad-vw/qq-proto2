@@ -2283,7 +2283,7 @@ function boot(){
  $('#actpChev').innerHTML=I.down;$('#i-kit').innerHTML=I.kit;$('#actpTg').onclick=()=>apToggle();
  let col=innerWidth<=900;try{const v=localStorage.getItem('qq_ap_col');if(v!=null&&innerWidth>900)col=v==='1';}catch(e){}
  $('#actp').classList.toggle('col',col);apRender();setTimeout(()=>apInsets(true),0);setInterval(apTick,7000);
- let seen=false;try{seen=localStorage.getItem('qq_entered')==='1'}catch(e){}if(!seen)openEntry('auth');
+ openEntry('auth');
  let rw=innerWidth;addEventListener('resize',()=>{if((rw<=900)!==(innerWidth<=900)){$('#actp').classList.toggle('col',innerWidth<=900);}rw=innerWidth;apInsets();});
  if(window.C3&&C3.fail){$('#stage').insertAdjacentHTML('beforeend','<div style="position:absolute;inset:0;display:grid;place-items:center;color:var(--graph)">3D needs WebGL. Your agents are below.</div>');}
 }
