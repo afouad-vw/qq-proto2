@@ -896,6 +896,188 @@ html{scroll-behavior:smooth}
 @media (max-width:900px){.navhint{bottom:132px;font-size:10.5px;gap:8px;padding:5px 10px}.navhint span+span{padding-left:8px}.navhint .nh-d{display:none}.navhint .nh-m{display:inline}.navhint span:last-child b:first-child{display:none}}
 @media (max-width:900px){.navhint span:last-child{font-size:0}.navhint span:last-child::after{content:"Tap an agent to open it";font-size:10.5px}}
 @media (max-width:900px){.zoom{bottom:172px}}
+/* ===== entry sequence ===== */
+.ov.entry{background:radial-gradient(1200px 700px at 80% -10%,rgba(198,255,52,.08),transparent 60%),radial-gradient(900px 600px at 0% 110%,rgba(127,214,255,.05),transparent 60%),var(--void);backdrop-filter:none;-webkit-backdrop-filter:none;z-index:70}
+.ov.entry::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(198,255,52,.12) 1px,transparent 1.6px);background-size:26px 26px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,transparent 30%,#000 85%);mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,transparent 30%,#000 85%);opacity:.6}
+.ov.entry>*{position:relative}
+.en-h{gap:16px;flex-wrap:nowrap}
+.en-logo{width:34px;height:34px;flex:0 0 34px}.en-logo svg{width:100%;height:100%}
+.steps2{display:flex;align-items:center;gap:8px;min-width:0;overflow-x:auto;scrollbar-width:none;margin-left:auto;margin-right:auto}
+.steps2::-webkit-scrollbar{display:none}
+.stp2{display:flex;align-items:center;gap:8px;flex:0 0 auto;color:var(--mute);font-size:12.5px}
+.stp2 b{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:600 11px var(--f-mono);border:1px solid var(--c600);color:var(--graph)}
+.stp2.on{color:var(--bone)}.stp2.on b{background:var(--lime);color:var(--carbon);border-color:var(--lime);box-shadow:0 0 16px rgba(198,255,52,.4)}
+.stp2.dn{color:var(--dim)}.stp2.dn b{background:rgba(198,255,52,.12);border-color:rgba(198,255,52,.4);color:var(--lime)}
+.stp2 em{font-style:normal;white-space:nowrap}
+.stp2-l{width:26px;height:1px;background:var(--c600);flex:0 0 26px}.stp2-l.dn{background:rgba(198,255,52,.5)}
+.en-skip{flex:0 0 auto}
+@media (max-width:900px){.stp2 em{display:none}.stp2.on em{display:inline}.stp2-l{width:14px;flex-basis:14px}.en-skip{font-size:10.5px;padding:4px 8px}}
+@media (max-width:520px){.en-skip{display:none}}
+/* auth */
+.auth2{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);overflow-y:auto}
+.auth-vis{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px 40px 40px;gap:10px}
+.av-stage{position:relative;width:min(100%,440px);aspect-ratio:1/.82;margin-bottom:56px}
+.av-ring{position:absolute;left:50%;top:62%;transform:translate(-50%,-50%) rotateX(68deg);border-radius:50%;border:1px solid rgba(198,255,52,.35)}
+.av-ring.r1{width:46%;aspect-ratio:1;box-shadow:0 0 30px rgba(198,255,52,.35),inset 0 0 30px rgba(198,255,52,.25)}
+.av-ring.r2{width:74%;aspect-ratio:1;border-style:dashed;border-color:rgba(198,255,52,.18)}
+.av-ring.r3{width:98%;aspect-ratio:1;border-color:rgba(127,214,255,.15)}
+.av-ae{position:absolute;left:50%;top:6%;width:32%;transform:translateX(-50%);animation:bob 5s ease-in-out infinite;filter:drop-shadow(0 20px 26px rgba(0,0,0,.6)) drop-shadow(0 0 30px rgba(198,255,52,.15))}
+.av-ped{position:absolute;left:50%;top:62%;width:30%;aspect-ratio:3/1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(198,255,52,.45),transparent)}
+.av-orb{position:absolute;left:50%;top:52%;width:12%;margin-left:-6%;margin-top:-9%;transform:rotate(var(--a)) translate(clamp(120px,19vw,200px)) rotate(calc(-1*var(--a))) scaleY(1);animation:orbit 40s linear infinite;animation-delay:var(--d);opacity:.9;filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))}
+@keyframes orbit{from{transform:rotate(var(--a)) translateX(clamp(100px,15vw,175px)) translateY(0) rotate(calc(-1*var(--a))) scale(.9)}to{transform:rotate(calc(var(--a) + 360deg)) translateX(clamp(100px,15vw,175px)) rotate(calc(-1*var(--a) - 360deg)) scale(.9)}}
+.av-copy{max-width:440px;text-align:center}.av-copy h2{font-size:clamp(20px,2.2vw,26px);margin-top:8px}.av-copy p{color:var(--graph);margin:10px 0 0}
+.auth-form{display:grid;place-items:center;padding:20px max(18px,env(safe-area-inset-right,0px)) 40px 18px}
+.af-card{width:min(100%,420px);padding:28px;border-radius:22px;background:linear-gradient(160deg,rgba(26,31,22,.8),rgba(10,12,9,.8));border:1px solid var(--edge);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.af-tabs{display:flex;gap:4px;padding:4px;border-radius:999px;background:var(--c850);border:1px solid var(--edge);margin-bottom:20px}
+.af-tabs button{flex:1;padding:8px;border-radius:999px;font-size:13px;color:var(--graph)}.af-tabs button.on{background:var(--c600);color:var(--bone)}
+.af-card h1{font-size:26px}.af-sub{color:var(--graph);margin:6px 0 18px}
+.sso{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:11px;border-radius:12px;border:1px solid var(--edge);background:rgba(244,246,238,.03);margin-bottom:8px;font-size:14px;transition:.2s}
+.sso:hover{border-color:var(--edge2);background:rgba(198,255,52,.05)}
+.sso-i{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;background:var(--bone);color:var(--carbon);font:700 11px var(--f-body)}
+.af-or{display:flex;align-items:center;gap:10px;margin:14px 0;color:var(--mute);font-size:12px}.af-or::before,.af-or::after{content:"";flex:1;height:1px;background:var(--edge)}
+.af-foot{font-size:11.5px;color:var(--mute);text-align:center;margin:14px 0 0}.af-foot a{color:var(--pale)}
+@media (max-width:860px){.auth2{grid-template-columns:minmax(0,1fr)}.auth-vis{padding:4px 18px 0}.av-stage{width:min(80%,300px)}.av-copy{display:none}}
+/* consent */
+.cns2{max-width:760px;margin:0 auto;padding-bottom:30px}
+.cns2 h1{font-size:clamp(26px,3.4vw,36px);margin:8px 0}
+.cns-lead{color:var(--dim);font-size:15px;margin:0 0 16px}
+.cns-law{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-radius:14px;background:rgba(127,214,255,.05);border:1px solid rgba(127,214,255,.22);margin-bottom:22px}
+.cns-law span{font:600 11px var(--f-mono);padding:4px 8px;border-radius:6px;background:rgba(127,214,255,.15);color:var(--info);flex:0 0 auto}.cns-law p{margin:0;color:var(--dim);font-size:13px;line-height:1.55}
+.cns-g{margin-bottom:18px}.cns-g>.lbl{margin-bottom:8px}
+.cns-r{width:100%;display:flex;gap:14px;align-items:flex-start;text-align:left;padding:14px 16px;border-radius:14px;border:1px solid var(--edge);background:var(--glass);margin-bottom:8px;transition:.2s}
+.cns-r:hover{border-color:var(--edge2)}
+.cns-r.on{border-color:rgba(198,255,52,.35);background:linear-gradient(160deg,rgba(198,255,52,.06),rgba(14,17,13,.6))}
+.cns-r.req{cursor:default}
+.cns-bx{width:22px;height:22px;flex:0 0 22px;border-radius:7px;border:1px solid var(--edge2);display:grid;place-items:center;color:transparent;font-size:13px;margin-top:1px}
+.cns-r.on .cns-bx{background:var(--lime);color:var(--carbon);border-color:var(--lime)}
+.cns-tx{flex:1;min-width:0}.cns-tx b{display:flex;gap:8px;align-items:center;font:500 14.5px var(--f-disp)}.cns-tx b em{font:600 9.5px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;font-style:normal;color:var(--acid);padding:2px 6px;border-radius:5px;background:rgba(198,255,52,.1)}
+.cns-tx small{display:block;font-size:12.5px;color:var(--graph);line-height:1.55;margin-top:4px}
+.cns-never{padding:16px;border-radius:14px;border:1px solid rgba(255,176,32,.3);background:rgba(255,176,32,.05);margin:6px 0 20px}.cns-never b{font-size:14px}.cns-never p{margin:6px 0 0;color:var(--dim);font-size:13px;line-height:1.55}
+.cns-go{width:100%;justify-content:center;padding:14px}
+.cns-foot{text-align:center;font-size:12px;color:var(--graph);margin-top:10px}
+/* chat + output panel */
+.chat-wrap{flex:1;min-height:0;display:flex}
+.chat-wrap>.chat{flex:1 1 auto;min-width:0}
+.outp{flex:0 0 0;width:0;min-width:0;overflow:hidden;display:flex;flex-direction:column;border-left:1px solid transparent;background:linear-gradient(180deg,rgba(14,17,13,.9),rgba(8,10,8,.92));transition:flex-basis .45s cubic-bezier(.2,.8,.2,1),border-color .3s}
+.chat-wrap.out .outp{flex-basis:min(46%,680px);border-left-color:var(--edge)}
+.chat-wrap.max .outp{flex-basis:72%}
+.outp-h{display:flex;align-items:center;gap:6px;padding:12px 14px;border-bottom:1px solid var(--edge);flex:0 0 auto;min-width:320px}
+.outp-t{flex:1;min-width:0;display:flex;flex-direction:column}.outp-t .lbl{font-size:9.5px;color:var(--acid)}.outp-t b{font:500 15px var(--f-disp);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.outp-t span:last-child{font-size:11.5px;color:var(--graph);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.icb{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:var(--graph);flex:0 0 34px}.icb:hover{color:var(--lime);background:rgba(198,255,52,.08)}.icb svg{width:16px;height:16px}
+.outp-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 14px;border-bottom:1px solid var(--edge);min-width:320px}
+.db-st{display:inline-flex;align-items:center;gap:6px;font:600 10.5px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:rgba(244,246,238,.05)}
+.db-st i{width:7px;height:7px;border-radius:50%;background:currentColor}.db-st.hold{color:var(--hold)}.db-st.up{color:var(--up)}.db-st.info{color:var(--info)}.db-st.down{color:var(--down)}
+.db-s{font-size:11.5px;color:var(--graph)}
+.outp-b{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:16px;min-width:320px;scroll-behavior:smooth}
+.outp-b.flush{padding:12px}
+.ocard{display:flex;align-items:center;gap:12px;width:100%;max-width:440px;margin-top:12px;padding:12px 14px;border-radius:14px;text-align:left;border:1px solid var(--edge2);background:linear-gradient(135deg,rgba(198,255,52,.1),rgba(14,17,13,.6));transition:.2s}
+.ocard:hover{box-shadow:0 0 24px rgba(198,255,52,.15);transform:translateY(-1px)}
+.oc-ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--lime);color:var(--carbon);flex:0 0 38px}.oc-ic svg{width:18px;height:18px}
+.oc-t{flex:1;min-width:0}.oc-t b{display:block;font:500 14px var(--f-disp)}.oc-t small{font-size:11.5px;color:var(--graph)}
+.oc-go{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--lime)}.oc-go svg{width:13px;height:13px}
+.outdoc h3{font-size:18px}.outdoc h4{font-size:14px;margin:14px 0 4px}
+.od-s{font-size:12.5px;color:var(--graph);margin:4px 0 14px}
+.od-tw{overflow-x:auto;border-radius:12px;border:1px solid var(--edge);background:rgba(10,12,9,.5)}
+.od-tw table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:380px}.od-tw th{text-align:left;font:600 9.5px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--acid);padding:10px 12px}.od-tw td{padding:10px 12px;border-top:1px solid var(--edge)}
+.od-tw tr.bad td{background:rgba(255,59,92,.05)}.od-tw tr.warn td{background:rgba(255,176,32,.05)}
+.od-call{margin-top:12px;padding:12px 14px;border-radius:12px;border:1px solid var(--edge);border-left:3px solid var(--acid);background:rgba(244,246,238,.025);font-size:12.5px}.od-call.w{border-left-color:var(--hold)}.od-call b{font-size:13px}.od-call p{margin:4px 0 0;color:var(--dim);line-height:1.5}
+.od-row{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-radius:12px;border:1px solid var(--edge);margin-bottom:6px}.od-row b{font-size:13px;font-weight:500}.od-row p{margin:3px 0 0;font-size:12.5px;color:var(--graph)}
+.ty2{font:600 9.5px var(--f-mono);padding:3px 6px;border-radius:5px;background:var(--c600);color:var(--pale)}
+.od-bar{margin-bottom:14px}.od-bar>div{display:flex;justify-content:space-between;font-size:12.5px;color:var(--dim)}.od-bar>i{display:block;height:8px;border-radius:8px;background:var(--c600);margin:6px 0 4px;overflow:hidden}.od-bar>i s{display:block;height:100%;background:linear-gradient(90deg,var(--acid),var(--lime));border-radius:8px}.od-bar small{font-size:11.5px;color:var(--graph)}
+.od-doc{padding:18px;border-radius:14px;background:#0d0f0c;border:1px solid var(--edge);margin-bottom:10px}.od-doc p{font-size:13px;color:var(--dim);line-height:1.6;margin:4px 0 0}
+.od-dh{display:flex;justify-content:space-between;align-items:center;font:600 10px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--acid);margin-bottom:12px}
+.vfo-tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:4px;margin-bottom:10px;border-radius:12px;background:rgba(10,12,9,.7);border:1px solid var(--edge);position:sticky;top:-12px;z-index:2}
+.vfo-tabs::-webkit-scrollbar{display:none}
+.vfo-tabs button{flex:0 0 auto;padding:6px 10px;border-radius:9px;font-size:12px;color:var(--graph);white-space:nowrap;display:flex;gap:6px;align-items:center}
+.vfo-tabs button .mono{font-size:10px;opacity:.7}.vfo-tabs button.on{background:rgba(198,255,52,.14);color:var(--bone);box-shadow:inset 0 0 0 1px rgba(198,255,52,.35)}
+.vf.vfo{height:60vh}
+/* in-chat widgets */
+.pick2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pick2 button{text-align:left;padding:14px;border-radius:14px;border:1px solid var(--edge);background:rgba(244,246,238,.03);transition:.2s}.pick2 button:hover{border-color:var(--lime);background:rgba(198,255,52,.06)}
+.pick2 b{display:block;font:500 14px var(--f-disp)}.pick2 small{display:block;font-size:12px;color:var(--graph);margin-top:4px;line-height:1.45}
+.chans{display:flex;gap:6px;flex-wrap:wrap}
+.chans button{display:flex;align-items:center;gap:8px;padding:7px 12px 7px 7px;border-radius:999px;border:1px solid var(--edge);font-size:13px;transition:.2s}
+.chans button span{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--c600);font:600 9px var(--f-mono)}
+.chans button.on{border-color:var(--lime);background:rgba(198,255,52,.08)}.chans button.on span{background:var(--lime);color:var(--carbon)}
+.sec-k{font:600 10px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--acid);margin-bottom:6px}
+.drop3{display:flex;align-items:center;gap:14px;width:100%;max-width:480px;padding:18px;border-radius:16px;border:1.5px dashed var(--edge2);background:rgba(198,255,52,.03);text-align:left;transition:.2s}
+.drop3:hover{background:rgba(198,255,52,.08);border-color:var(--lime)}
+.drop3 .dz-ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--c700);color:var(--lime)}.drop3 .dz-ic svg{width:18px;height:18px}
+.drop3 b{display:block;font:500 14px var(--f-disp)}.drop3 small{font-size:12px;color:var(--graph)}
+.msg .card .frm{max-width:420px}
+.rec-f{display:flex;gap:6px;flex-wrap:wrap}
+.rec-s{display:grid;gap:6px}
+.rs2{display:flex;gap:10px;align-items:center;padding:9px 12px;border-radius:12px;border:1px dashed var(--edge);opacity:.55;transition:.4s}
+.rs2.on{opacity:1;border-style:solid;background:rgba(244,246,238,.025);animation:apnew 1.2s}
+.rs-n{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;background:var(--c700);font-size:10.5px;color:var(--lime);flex:0 0 22px}
+.rs2 b{display:block;font-size:13px;font-weight:500}.rs2 small{display:block;font-size:11.5px;color:var(--graph);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kit-grid.compact{grid-template-columns:minmax(0,1fr)}
+.kit-grid.compact .kit-sum{position:relative}
+.kit-grid.compact .roster{grid-template-columns:minmax(0,1fr)}
+.kit-grid.compact .tiers{grid-template-columns:minmax(0,1fr)}
+.kit-grid.compact .cu{grid-template-columns:110px minmax(0,1fr) 36px}
+.pay{margin-top:14px;display:grid;gap:10px}.pay label{display:grid;gap:5px;font-size:12px;color:var(--graph)}.pay input{background:var(--c850);border:1px solid var(--edge);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--bone);outline:0}
+@media (max-width:900px){
+ .chat-wrap{position:relative}
+ .outp{position:absolute;inset:0;z-index:5;flex-basis:auto;width:100%;transform:translateY(102%);transition:transform .45s cubic-bezier(.2,.8,.2,1);border-left:0}
+ .chat-wrap.out .outp{transform:none}
+ .outp-h,.outp-bar,.outp-b{min-width:0}
+ #outMax{display:none}
+ .pick2{grid-template-columns:1fr}
+}
+/* kit types */
+.ktypes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.ktypes.one{grid-template-columns:1fr;margin-top:10px}
+.kt2{padding:12px;border-radius:12px;border:1px solid var(--edge2);background:rgba(198,255,52,.05)}
+.kt2 b{display:block;font:500 13.5px var(--f-disp)}.kt2 span{display:block;font-size:12px;color:var(--graph);margin-top:4px;line-height:1.45}
+.kt2.no{border-style:dashed;border-color:var(--edge);background:none;opacity:.8}.kt2.no b{text-decoration:line-through;text-decoration-color:var(--down)}
+.kc-av{position:relative;width:46px;height:50px;flex:0 0 46px;border-radius:13px;display:grid;place-items:end center;background:radial-gradient(circle at 50% 80%,rgba(198,255,52,.22),transparent 70%),var(--c800);overflow:visible}
+.kc-av img{width:84%;border-radius:0 0 12px 12px}
+.kc-av i{position:absolute;right:-6px;top:-6px;font:700 9px var(--f-mono);font-style:normal;padding:3px 5px;border-radius:6px;background:var(--c600);color:var(--pale);border:1px solid var(--edge)}
+.kc.on .kc-av i,.cck.on .kc-av i{background:var(--lime);color:var(--carbon)}
+.eq{display:inline-block;margin:4px 4px 0 0;font:600 9.5px var(--f-mono);font-style:normal;padding:2px 6px;border-radius:5px;background:rgba(198,255,52,.12);color:var(--lime);border:1px solid rgba(198,255,52,.3)}
+@media (max-width:860px){.ktypes{grid-template-columns:1fr}}
+/* command centre */
+.cc-tabs{margin-top:6px}
+.cc-tiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-bottom:16px}
+.cct{position:relative;padding:14px;border-radius:16px;background:var(--glass);border:1px solid var(--edge);overflow:hidden}
+.cct .v{font:500 26px var(--f-disp);margin-top:6px}.cct .v small{font:500 12px var(--f-mono);color:var(--graph);margin-left:3px}
+.cct .s{font-size:11.5px;color:var(--graph);margin-top:3px}
+.cct .bar{height:4px;border-radius:4px;background:var(--c600);margin-top:10px;overflow:hidden}.cct .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acid),var(--lime))}
+.cct .spark{position:absolute;right:10px;top:12px;width:64px;height:26px}
+.cc-2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-bottom:16px;align-items:start}
+.cc-reco{margin-bottom:16px}
+.cc-kits{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px}
+.cck{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:14px;border:1px solid var(--edge);background:rgba(244,246,238,.025)}
+.cck.on{border-color:rgba(198,255,52,.35)}
+.cc-strength{display:grid;grid-template-columns:auto 1fr;gap:6px 24px;align-items:center;padding:18px;border-radius:18px;border:1px solid var(--edge2);background:linear-gradient(135deg,rgba(198,255,52,.1),rgba(14,17,13,.6))}
+.cc-strength .cs-v{font:500 34px var(--f-disp)}.cc-strength .cs-v small{font:500 13px var(--f-mono);color:var(--graph)}
+.cc-strength .s{font-size:12px;color:var(--graph)}
+.cs-bar{height:10px;border-radius:10px;background:var(--c600);overflow:hidden}.cs-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acid),var(--lime));box-shadow:0 0 14px var(--lime)}
+.cc-strength p{grid-column:1/-1;margin:4px 0 0;font-size:12px;color:var(--graph)}
+.cc-people{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.ccp{display:flex;gap:10px;align-items:center;padding:11px 12px;border-radius:14px;border:1px solid var(--edge);background:var(--glass);text-align:left}
+.ccp .ph{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--c600);font:600 12px var(--f-disp);color:var(--pale);flex:0 0 38px}
+.ccp b{display:block;font-size:13.5px;font-weight:500}.ccp small{font-size:11.5px;color:var(--graph)}
+.ccp.add{border-style:dashed;color:var(--lime);justify-content:center}.ccp.add svg{width:16px;height:16px}
+.cc-agents{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
+.cca{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:16px;border:1px solid var(--edge);background:var(--glass);text-align:left;transition:.2s}
+.cca:hover{border-color:var(--edge2);transform:translateY(-2px)}
+.cca-av{width:52px;height:58px;flex:0 0 52px;border-radius:14px;display:grid;place-items:end center;background:radial-gradient(circle at 50% 80%,rgba(198,255,52,.22),transparent 70%),var(--c800);overflow:hidden}
+.cca-av img{width:86%}
+.cca-t{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.cca-t b{font:500 14px var(--f-disp)}
+.cca small{display:block;font-size:11.5px;color:var(--graph);margin-top:2px}
+.cca-now{font-size:12px;color:var(--dim);margin-top:5px}
+.cca-m{font-size:11px;color:var(--graph);margin-top:4px}.cca-m .mono{color:var(--lime)}
+.ccperf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.cpk{position:relative;padding:12px;border-radius:12px;border:1px solid var(--edge);background:rgba(244,246,238,.025);overflow:hidden}
+.cpk .v{font-size:17px;margin-top:4px}.cpk .d{font:500 11px var(--f-mono);color:var(--graph)}.cpk .d.u{color:var(--up)}.cpk .d.d{color:var(--down)}
+.cpk .spark{position:absolute;right:8px;bottom:8px;width:54px;height:22px;opacity:.7}
+.ccm{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:14px}
+.ccm div{padding:10px;border-radius:12px;border:1px solid var(--edge);text-align:center}.ccm b{display:block;font-size:18px;color:var(--lime)}.ccm span{font-size:11px;color:var(--graph)}
+@media (max-width:1100px){.cc-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:860px){.cc-2{grid-template-columns:minmax(0,1fr)}.cc-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.ccperf{grid-template-columns:repeat(2,minmax(0,1fr))}.ccm{grid-template-columns:repeat(2,minmax(0,1fr))}.cc-kits{grid-template-columns:1fr}}
+.en-skip{display:inline-flex;align-items:center;gap:6px}.en-skip svg{width:13px;height:13px;flex:0 0 13px}
 </style>
 
 <div id="boot"><div class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="310.13 0 424.1 429.98"><path fill="#A8E01F" d="M403.97,273.21c0-157.93,72.2-171.56,162.13-171.56,22,0,43.67,1.22,63.66,5.4-18-71.16-83.64-77.69-157.26-98.37-110.31-30.99-151.66,22.86-160.93,132.85-10.24,121.46,35.5,162.73,97.25,175.66-3.16-12.52-4.85-27.03-4.85-43.97Z"/><path fill="#C6FF34" d="M571.86,107.4c-89.93,0-162.12,13.63-162.13,171.56,0,113.31,75.55,118.03,162.13,142.36,110.31,30.99,151.66-22.86,160.93-132.85,13.55-160.8-70.99-181.07-160.93-181.07Z"/></svg><div class="lbl">Assembling your team</div></div></div>
@@ -908,7 +1090,7 @@ html{scroll-behavior:smooth}
    <button onclick="openPipeline()" aria-label="Fundraising Pipeline"><span id="i-pipe"></span><span class="tip">Fundraising Pipeline</span></button>
    <button onclick="openKB()" aria-label="Knowledge Base"><span id="i-kb"></span><span class="tip">Knowledge Base</span></button>
    <button onclick="openConnectors()" aria-label="Connectors"><span id="i-conn"></span><span class="tip">Connectors</span></button>
-   <button onclick="openActivity()" aria-label="Activity"><span id="i-act"></span><span class="badge"></span><span class="tip">Activity</span></button>
+   <button onclick="openActivity()" aria-label="Command Centre"><span id="i-act"></span><span class="badge"></span><span class="tip">Command Centre</span></button>
   </nav>
   <div class="acct">
    <button class="vsel" id="vbtn" aria-label="Switch venture"></button>
@@ -1155,10 +1337,16 @@ const PLANS=[
  {n:'Foundation',p:'EGP 2,400',d:'Aether and the entry team.',f:['Identity, Assessment, Staffing','Build for the core modules','Base capacity']},
  {n:'Growth',p:'EGP 6,900',d:'The full founder team for a raise.',f:['All nine seniors','Deal Flow and Deal Terms for the raise','More capacity'],rec:1},
  {n:'Scale',p:'EGP 14,500',d:'After the close.',f:['All nine seniors','Investor Relations and Presence at full pace','Most capacity']}];
+// Kits, per the kit definition: Type A changes what a senior can do; Type B changes what it knows. Capacity is never a kit.
 const KITS=[
- {i:'LG',n:'Egyptian legal',k:'Context kit · equips Build',p:'EGP 2,200',why:'You have four blocking legal items and no entity. This is the gap the assessment keeps pointing at.'},
- {i:'OH',n:'Org & hiring',k:'Capability kit · equips Build',p:'EGP 1,800',why:'Matters once you hire more than two people. Phase 1 already needs 113% of your capacity.'},
- {i:'GR',n:'Growth testing',k:'Capability kit · equips Build',p:'EGP 1,500',why:'Not yet. With 34 nameable buyers there is nothing to optimise until you are selling.'}];
+ {i:'EG',ty:'B',to:'build',n:'Egyptian company law',k:'Context · equips Build',p:'EGP 2,200',why:'Build learns Egyptian incorporation, IP assignment and founders agreements. You have four blocking legal items and no entity: the gap the assessment keeps pointing at.'},
+ {i:'MN',ty:'B',to:'dealterms',n:'MENA investor norms',k:'Context · equips Deal Terms',p:'EGP 1,600',why:'Local term structures and what MENA seed investors usually ask for, so the Levant benchmark is against this market rather than a generic one.'},
+ {i:'PH',ty:'B',to:'market',n:'Pharma distribution regulation',k:'Context · equips Market and Build',p:'EGP 1,400',why:'The regulator’s guidance, licensing and cold-chain rules, so the standing watch and the plan read your sector, not logistics in general.'},
+ {i:'CT',ty:'A',to:'dealterms',n:'Cap table waterfall modelling',k:'Capability · equips Deal Terms',p:'EGP 1,800',why:'Deal Terms can model exit waterfalls across scenarios, not just ownership before and after. Useful while the Levant pool and drag-along are open.'},
+ {i:'TS',ty:'A',to:'dealterms',n:'Term sheet drafting',k:'Capability · equips Deal Terms',p:'EGP 1,500',why:'Moves Deal Terms from analysing a term sheet to drafting your counter, from counsel-cleared templates. Counsel still negotiates it.'},
+ {i:'DP',ty:'A',to:'aether',n:'Depth control',k:'Capability · any senior, set by you',p:'EGP 900',why:'Not cheaper: you decide when a piece of work is worth being expensive. Tell your team this one matters, take your time, as you would with staff.'},
+ {i:'IC',ty:'A',to:'aether',n:'Investment committee rehearsal',k:'Specialist panel · dispatched by Aether',p:'EGP 1,900',why:'Rehearse in front of the same panel investors use. Several reviewer roles score the opportunity and the fit, with reasons and recorded dissent, labelled simulated. The panel challenges; you decide.'}];
+
 const TOKENS={used:612000,limit:1000000,renews:'1 October',plan:'Growth'};
 
 /* ================= APP ================= */
@@ -1173,8 +1361,10 @@ const I={
  pipe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h18M6 12h12M9 18h6"/><circle cx="20" cy="18" r="1.4" fill="currentColor"/></svg>',
  kb:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 7.5l9 4.5 9-4.5L12 3Z"/><path d="m3 12 9 4.5 9-4.5M3 16.5 12 21l9-4.5"/></svg>',
  conn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7V3M15 7V3M7 7h10v4a5 5 0 0 1-10 0V7ZM12 16v5"/></svg>',
- act:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-6 5 12 2.5-6h4"/></svg>',
+ act:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><path d="M17 13.5v7M13.5 17h7"/></svg>',
  kit:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7M3 12.5h18M10.5 12.5v2h3v-2"/></svg>',
+ doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg>',
+ expand:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg>',
  x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
  back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
  down:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>',
@@ -1196,12 +1386,14 @@ function renderTop(){
 function toggleVMenu(e){e.stopPropagation();let m=$('#vmenu');if(m){m.remove();return;}
  m=document.createElement('div');m.id='vmenu';m.className='vmenu';
  m.innerHTML='<div class="lbl">Your ventures</div>'+VENTURES.map(v=>'<button class="vopt'+(v.id===CUR?' on':'')+'" data-v="'+v.id+'"><span class="vi" style="width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--c700);font:600 11px var(--f-mono);color:var(--lime)">'+v.ic+'</span><span><div style="font-weight:500">'+v.n+'</div><div style="font-size:11.5px;color:var(--graph)">'+v.s+'</div></span><span class="sc">'+v.score+'</span></button>').join('')+
- '<div style="border-top:1px solid var(--edge);margin:6px 0"></div><button class="vopt" data-a="profile">Profile &amp; settings</button><button class="vopt" data-a="new">Start a new venture</button>';
+ '<div style="border-top:1px solid var(--edge);margin:6px 0"></div><button class="vopt" data-a="profile">Profile &amp; settings</button><button class="vopt" data-a="new">Start a new venture</button><button class="vopt" data-a="replay">Replay sign-up and onboarding</button><button class="vopt" data-a="out">Sign out</button>';
  m.classList.add('fx');document.body.appendChild(m);const br=$('#vbtn').getBoundingClientRect();m.style.top=(br.bottom+8)+'px';m.style.right=Math.max(12,innerWidth-br.right)+'px';m.style.width=Math.min(300,innerWidth-24)+'px';
  m.addEventListener('click',ev=>{ev.stopPropagation();const b=ev.target.closest('button');if(!b)return;
   if(b.dataset.v){CUR=b.dataset.v;renderTop();toast(b.dataset.v==='sanad'?'Switched to Sanad':'Switched. This prototype shows Sanad data for every venture.');}
   if(b.dataset.a==='profile')openProfile();
   if(b.dataset.a==='new')openChat('identity',null,'onboarding');
+  if(b.dataset.a==='replay')openEntry('auth');
+  if(b.dataset.a==='out'){try{localStorage.removeItem('qq_entered')}catch(e){}openEntry('auth');}
   m.remove();});
 }
 document.addEventListener('click',()=>{const m=$('#vmenu');if(m)m.remove();});
@@ -1222,25 +1414,54 @@ function workHTML(){return WORK.map(w=>{const a=AG[w.ag],s=ST[a.st];return '<but
   '<div class="r"><span class="pill '+s[1]+'" style="font-size:10.5px;padding:2px 8px"><span class="d"></span>'+s[0]+'</span><div class="prog'+(w.run?' run':'')+'"><i style="width:'+Math.round(w.p*100)+'%;'+(a.st==='blocked'?'background:var(--down)':a.st==='waiting'?'background:var(--hold)':'')+'"></i></div></div></button>';}).join('');}
 function feedHTML(){const list=FEED.filter(f=>feedFilter==='all'||(feedFilter==='you'?['action','wait','flag'].includes(f.k):f.k==='done'));
  return list.map(f=>'<div class="feed"><span class="kind '+f.k+'"></span>'+AVA(f.ag)+'<div style="min-width:0;flex:1"><div class="t">'+f.t+'</div><div class="b">'+f.b+'</div><div class="m"><span>'+AG[f.ag].n+' · '+f.tm+'</span>'+f.acts.map((x,i)=>'<button class="mini'+(i?' ghost':'')+'" onclick="'+x[1]+'">'+x[0]+'</button>').join('')+'</div></div></div>').join('');}
+function spark(vals){const w=64,h=26,mx=Math.max(...vals),mn=Math.min(...vals);const pts=vals.map((v,i)=>[i/(vals.length-1)*w,h-2-(v-mn)/(mx-mn||1)*(h-6)]);
+ return '<svg class="spark" viewBox="0 0 64 26"><path d="M'+pts.map(p=>p.join(',')).join(' L')+' L64,26 L0,26Z" fill="rgba(198,255,52,.12)"/><path d="M'+pts.map(p=>p.join(',')).join(' L')+'" fill="none" stroke="#C6FF34" stroke-width="1.5"/><circle cx="'+pts[pts.length-1][0]+'" cy="'+pts[pts.length-1][1]+'" r="2.4" fill="#C6FF34"/></svg>';}
+let CC_TAB='overview';
+const RUNS={build:41,dealterms:18,dealflow:16,assessment:9,market:22,presence:11,identity:7,staffing:4,investorrel:3,aether:63};
 function openActivity(){
- const need=FEED.filter(f=>['action','wait','flag'].includes(f.k)).length;
- const lane=ORDER.concat(['aether']).map(k=>{const a=AG[k],s=ST[a.st];return '<button class="ln" onclick="openAgent(\''+k+'\')"><span class="lav"><img src="'+img(k)+'" alt=""></span><span class="lnm">'+a.n+'</span><span class="pill '+s[1]+'" style="font-size:10px;padding:1px 7px"><span class="d"></span>'+s[0]+'</span><span class="lnow">'+a.now+'</span></button>';}).join('');
- const body='<div class="vc-hero"><div><div class="lbl">Activity · Sanad</div><h1>What your team is doing</h1><p>'+need+' items need you. Everything else is moving.</p></div></div>'+
-  '<div class="lanes">'+lane+'</div>'+
-  '<div class="act-grid"><div class="panel"><div class="panel-h"><h3>Agent activity</h3><span class="lbl">Live</span></div><div>'+workHTML()+'</div></div>'+
-  '<div class="panel"><div class="panel-h"><h3>Activity &amp; notifications</h3><div class="seg" id="fseg"><button data-f="all">All</button><button data-f="you">Needs you</button><button data-f="done">Done</button></div></div><div id="feed"></div></div></div>';
- const el=ovShell({title:'Activity',sub:'Agent activity and notifications',body});
- const rf=()=>{$('#feed',el).innerHTML=feedHTML();$$('#fseg button',el).forEach(b=>b.classList.toggle('on',b.dataset.f===feedFilter));};
- $$('#fseg button',el).forEach(b=>b.onclick=()=>{feedFilter=b.dataset.f;rf();});rf();
+ const body='<div class="vc-hero"><div><div class="lbl">Command Centre · Aether</div><h1>Your team, people and agents</h1><p>What the team has been doing, how it is performing, and what Staffing would add next. Every item carries which senior did it, and on what basis.</p></div><button class="btn pri" onclick="openChat(\'aether\')">'+I.chat+' Ask Aether</button></div>'+
+  '<div class="tabs cc-tabs" role="tablist">'+[['overview','Overview'],['team','Team'],['perf','Performance'],['kits','Kits & capacity'],['feed','Activity feed']].map(t=>'<button role="tab" data-t="'+t[0]+'" class="'+(CC_TAB===t[0]?'on':'')+'">'+t[1]+'</button>').join('')+'</div><div id="ccB"></div>';
+ const el=ovShell({title:'Command Centre',sub:'Sanad · team, performance and activity',body});
+ const show=t=>{CC_TAB=t;$$('.cc-tabs button',el).forEach(b=>b.classList.toggle('on',b.dataset.t===t));const b=$('#ccB',el);b.innerHTML=CCV[t]();b.firstChild&&b.firstChild.animate&&b.firstChild.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:450,easing:'cubic-bezier(.2,.8,.2,1)'});
+  if(t==='feed'||t==='overview'){const rf=()=>{const f=$('#feed',el);if(!f)return;f.innerHTML=feedHTML();$$('#fseg button',el).forEach(x=>x.classList.toggle('on',x.dataset.f===feedFilter));};$$('#fseg button',el).forEach(x=>x.onclick=()=>{feedFilter=x.dataset.f;rf();});rf();}
+  $$('[data-eq]',el).forEach(x=>x.onclick=()=>{KITST.kits[x.dataset.eq]=true;toast(x.dataset.eq+' added to your plan. Review it in Edit your agent kit.');show(t);});
+  $$('[data-cct]',el).forEach(x=>x.onclick=()=>show(x.dataset.cct));};
+ $$('.cc-tabs button',el).forEach(b=>b.onclick=()=>show(b.dataset.t));show(CC_TAB);
 }
+const tile=(l,v,s,extra)=>'<div class="cct"><div class="lbl">'+l+'</div><div class="v">'+v+'</div><div class="s">'+s+'</div>'+(extra||'')+'</div>';
+const CCV={
+ overview:()=>{const used=Math.round(TOKENS.used/TOKENS.limit*100),need=FEED.filter(f=>['action','wait','flag'].includes(f.k));const runs=Object.values(RUNS).reduce((x,y)=>x+y,0);
+  return '<div><div class="cc-tiles">'+tile('Venture score','60<small>/100</small>','+12 · confidence 0.71',spark([48,48,51,54,57,60]))+tile('Raise','EGP 600K','of EGP 3.2M · 8 active deals','<div class="bar"><i style="width:19%"></i></div>')+tile('Team capacity',used+'%','Growth tier · renews '+TOKENS.renews,'<div class="bar"><i style="width:'+used+'%"></i></div>')+tile('Agent runs',runs,'this week · 9 seniors and Aether')+tile('Waiting on you',need.length,'approvals and decisions')+tile('Kits equipped',KITS.filter(x=>KITST.kits[x.n]).length+'<small>/'+KITS.length+'</small>',RECO.kits.filter(k=>!KITST.kits[k]).length+' recommended, not equipped')+'</div>'+
+   '<div class="cc-2"><div class="panel"><div class="panel-h"><h3>Needs you</h3><button class="mini ghost" data-cct="feed">All activity</button></div>'+need.slice(0,4).map(f=>'<div class="feed"><span class="kind '+f.k+'"></span>'+AVA(f.ag)+'<div style="min-width:0;flex:1"><div class="t">'+f.t+'</div><div class="b">'+f.b+'</div><div class="m"><span>'+AG[f.ag].n+' · '+f.tm+'</span>'+f.acts.slice(0,1).map(x=>'<button class="mini" onclick="'+x[1]+'">'+x[0]+'</button>').join('')+'</div></div></div>').join('')+'</div>'+
+   '<div class="panel"><div class="panel-h"><h3>Team right now</h3><button class="mini ghost" data-cct="team">Whole team</button></div>'+workHTML()+'</div></div>'+
+   '<div class="panel cc-reco"><div class="panel-h"><h3>Staffing recommends</h3><button class="mini ghost" data-cct="kits">Kits & capacity</button></div><div class="cc-kits">'+KITS.filter(x=>RECO.kits.includes(x.n)).map(kitCard).join('')+'</div></div></div>';},
+ team:()=>{const people=[['NH','Nour Halim','Founder · admin','Verified','up'],['KA','Karim Adly','Founder · part-time to month 6','Verified','up'],['YF','Yasmine Fouad','Founder · 15%','Proxy record','hold']];
+  const staffed=ORDER.filter(k=>KITST.staffed[k]).length,eq=KITS.filter(x=>KITST.kits[x.n]).length,score=Math.round(staffed/9*55+eq/KITS.length*25+20);
+  return '<div><div class="cc-strength"><div><div class="lbl">Team strength</div><div class="cs-v">'+score+'<small>/100</small></div><div class="s">'+staffed+' of 9 seniors staffed · '+eq+' kits equipped · '+people.length+' people</div></div><div class="cs-bar"><i style="width:'+score+'%"></i></div><p>Built from who is on the team and how they are equipped. It never scores the raise or a deal.</p></div>'+
+   '<div class="lbl" style="margin:18px 0 8px">People · joined through membership</div><div class="cc-people">'+people.map(p=>'<div class="ccp"><span class="ph">'+p[0]+'</span><div style="min-width:0;flex:1"><b>'+p[1]+'</b><small>'+p[2]+'</small></div><span class="pill '+p[4]+'"><span class="d"></span>'+p[3]+'</span></div>').join('')+'<button class="ccp add" onclick="openChat(\'identity\',\'Collaborator and access management\')">'+I.plus+'<b>Invite an adviser or finance lead</b></button></div>'+
+   '<div class="lbl" style="margin:18px 0 8px">Agents · joined through Staffing</div><div class="cc-agents">'+['aether'].concat(ORDER).map(k=>{const a=AG[k],s=ST[a.st],kits=KITS.filter(x=>x.to===k&&KITST.kits[x.n]);return '<button class="cca" onclick="openAgent(\''+k+'\')"><span class="cca-av"><img src="'+img(k)+'" alt=""></span><div style="min-width:0;flex:1"><div class="cca-t"><b>'+a.n+'</b><span class="pill '+s[1]+'" style="font-size:10px;padding:1px 7px"><span class="d"></span>'+s[0]+'</span></div><small>'+a.role+' · '+(k==='aether'?'9 seniors':a.subs.length+' sub-agents')+'</small><div class="cca-now">'+a.now+'</div><div class="cca-m"><span class="mono">'+RUNS[k]+'</span> runs this week'+(kits.length?' · '+kits.map(x=>'<em class="eq">'+x.i+'</em>').join(''):'')+'</div></div></button>';}).join('')+'</div></div>';},
+ perf:()=>'<div><div class="cc-2"><div class="panel"><div class="panel-h"><h3>Venture performance</h3><span class="lbl">Live read · from connectors</span></div><div class="ccperf">'+NLBASE.kpi.map((k,i)=>'<div class="cpk"><div class="lbl">'+k[0]+'</div><div class="v mono">'+k[1]+'</div><div class="d '+k[3]+'">'+k[2]+'</div>'+spark([3,4,4,5,5,6].map((v,j)=>v+(k[3]==='d'?-j*.6:j*.3)+((i*j)%3)*.2))+'</div>').join('')+'</div><p class="kit-note">Assessment’s Performance ingestion reads these through the connected systems. Connect accounting and analytics to fill the rest.</p></div>'+
+   '<div class="panel"><div class="panel-h"><h3>Team performance</h3><span class="lbl">This week</span></div>'+Object.entries(RUNS).sort((x,y)=>y[1]-x[1]).map(([k,v])=>'<div class="cu"><span class="cu-n"><img src="'+img(k)+'" alt="">'+AG[k].n+'</span><span class="cu-b"><i style="width:'+v/63*100+'%"></i></span><span class="mono cu-v">'+v+'</span></div>').join('')+
+   '<div class="ccm"><div><b class="mono">94%</b><span>outputs approved</span></div><div><b class="mono">3</b><span>redirected mid-run</span></div><div><b class="mono">12</b><span>escalations resolved</span></div><div><b class="mono">6</b><span>handoffs via Aether</span></div></div></div></div>'+
+   '<div class="panel"><div class="panel-h"><h3>Recent handoffs</h3><span class="lbl">Run by Aether</span></div><div class="tl">'+[['Today','Assessment → Build','Reassessment fed the tactical plan'],['Yesterday','Deal Flow → Deal Terms','Levant moved to Negotiate; terms analysis started'],['2 Sep','Deal Flow → Investor Relations','Medhat closed; a holding was created'],['1 Sep','Market → Build','GDP guidance added to the knowledge base']].map(h=>'<div class="e"><div class="w">'+h[0]+'</div><div class="t"><b>'+h[1]+'</b> · '+h[2]+'</div></div>').join('')+'</div></div></div>',
+ kits:()=>{const used=Math.round(TOKENS.used/TOKENS.limit*100);
+  return '<div><div class="cc-2"><div class="panel"><div class="panel-h"><h3>Capacity</h3><span class="lbl">Free to see · part of Purchase</span></div><div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font:500 26px var(--f-disp)">'+used+'%</b><span style="font-size:12px;color:var(--graph)">Renews '+TOKENS.renews+'</span></div><div class="cap" style="padding:0;border:0;background:none"><div class="bar"><i style="width:'+used+'%"></i></div></div>'+
+   '<div class="od-call w"><b>Capacity forecast</b><p>At this week’s pace the team reaches its limit around 27 September, four days before renewal. If it does, the team slows and says so. More output means more team, through the tier, never a kit.</p></div>'+
+   '<div class="lbl" style="margin:14px 0 8px">Where it went</div>'+CAP_USE.slice(0,6).map(c=>'<div class="cu"><span class="cu-n"><img src="'+img(c[0])+'" alt="">'+AG[c[0]].n+'</span><span class="cu-b"><i style="width:'+c[1]*2.4+'%"></i></span><span class="mono cu-v">'+c[1]+'%</span></div>').join('')+'</div>'+
+   '<div class="panel"><div class="panel-h"><h3>What efficiency costs you</h3></div><p class="kit-note" style="margin-top:0">Nothing. Model routing, caching, prompt compression and context trimming run by default for every venture. They are our margin, not yours, so they are never sold back.</p><div class="ktypes one"><div class="kt2"><b>Depth control</b><span>The one genuine kit here: you decide when a piece of work is worth being expensive.</span></div></div></div></div>'+
+   '<div class="panel"><div class="panel-h"><h3>Kit recommendations</h3><button class="mini" onclick="openKit()">Edit your agent kit</button></div><p class="kit-note" style="margin:0 0 10px">From the assessment’s capability need. Kits sell specialisation, never a better place in matchmaking.</p><div class="cc-kits">'+KITS.map(kitCard).join('')+'</div></div></div>';},
+ feed:()=>'<div class="act-grid"><div class="panel"><div class="panel-h"><h3>Agent activity</h3><span class="lbl">Live</span></div><div>'+workHTML()+'</div></div><div class="panel"><div class="panel-h"><h3>Activity feed</h3><div class="seg" id="fseg"><button data-f="all">All</button><button data-f="you">Needs you</button><button data-f="done">Done</button></div></div><div id="feed"></div></div></div>'
+};
+function kitCard(x){const on=!!KITST.kits[x.n],rec=RECO.kits.includes(x.n);return '<div class="cck'+(on?' on':'')+'"><span class="kc-av"><img src="'+img(x.to)+'" alt=""><i>'+x.i+'</i></span><div style="min-width:0;flex:1"><div class="kc-t"><b>'+x.n+'</b><span class="pill" style="font-size:10px;padding:1px 7px">Type '+x.ty+'</span>'+(rec?'<span class="pill lime" style="font-size:10px;padding:1px 7px">Recommended</span>':'')+'</div><div class="kc-k">'+x.k+'</div><div class="kc-w">'+x.why+'</div></div><div class="kc-r"><div class="mono">'+x.p+'<small>/mo</small></div>'+(on?'<span class="pill up" style="font-size:10.5px"><span class="d"></span>Equipped</span>':'<button class="mini" data-eq="'+x.n+'">Equip</button>')+'</div></div>';}
 
 /* ---------- overlay stack ---------- */
 const STACK=[];
 function ovShell(o){
  const el=document.createElement('section');el.className='ov';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');
- el.innerHTML='<header class="ov-h">'+(STACK.length?'<button class="bk" aria-label="Back">'+I.back+'</button>':'')+(o.head||'<div><h2>'+o.title+'</h2>'+(o.sub?'<div class="sub">'+o.sub+'</div>':'')+'</div>')+'<div class="sp"></div>'+(o.right||'')+'<button class="xbtn" aria-label="Close">'+I.x+'</button></header>'+(o.raw||'<div class="ov-b"><div class="wrap">'+o.body+'</div></div>');
+ if(o.entry!=null)el.classList.add('entry');
+ el.innerHTML=o.entry!=null?'<header class="ov-h en-h"><span class="en-logo">'+LOGO_MARK+'</span>'+stepsHTML(o.entry)+'<div class="sp"></div>'+'<button class="mini ghost en-skip" onclick="'+(['openEntry(\'onboarding\')','openEntry(\'onboarding\')','openEntry(\'assessment\')','openEntry(\'kit\')','finishEntry()'][o.entry])+'">'+(['Skip to onboarding','Skip to onboarding','Skip to assessment','Skip to purchase','Skip to Command Centre'][o.entry])+' '+I.arr+'</button>'+'</header>'+(o.raw||'<div class="ov-b"><div class="wrap">'+o.body+'</div></div>'):'<header class="ov-h">'+(STACK.length?'<button class="bk" aria-label="Back">'+I.back+'</button>':'')+(o.head||'<div><h2>'+o.title+'</h2>'+(o.sub?'<div class="sub">'+o.sub+'</div>':'')+'</div>')+'<div class="sp"></div>'+(o.right||'')+'<button class="xbtn" aria-label="Close">'+I.x+'</button></header>'+(o.raw||'<div class="ov-b"><div class="wrap">'+o.body+'</div></div>');
  document.body.appendChild(el);
- $('.xbtn',el).onclick=closeAll;const bk=$('.bk',el);if(bk)bk.onclick=popOv;
+ const xb=$('.xbtn',el);if(xb)xb.onclick=closeAll;const bk=$('.bk',el);if(bk)bk.onclick=popOv;
  STACK.push(el);if(window.C3&&C3.pause){C3.pause(true);C3.hideCard&&C3.hideCard();}
  requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('on')));
  return el;
@@ -1270,24 +1491,24 @@ function openAgent(k){
 const R={
  aether:{
   'What needs me today?':{t:'<p>Four things, in the order I would take them.</p><p><b>1. Levant term sheet.</b> Deal Terms flagged the 12% pre-money pool. You carry that dilution. Pushback is drafted.<br><b>2. Yasmine Fouad.</b> Identity needs 10 minutes with her. Two investors have asked.<br><b>3. Which revenue figure is wrong.</b> Build is holding year 3 at 158% of your SOM until you decide.<br><b>4. Two Presence drafts.</b> Neither mentions the raise.</p><p>Everything else is moving without you.</p>',tools:['Reading the activity feed','Checking escalations from 4 seniors'],chips:['Open the term sheet','Why is legal the binding constraint?']},
-  'Why is legal the binding constraint?':{t:'<p>Because it is the one gap that stops money arriving, whatever else improves.</p><p>There is no entity, no IP assignment and no signed founders agreement. Sherif Adel has committed and cannot invest. Delta Seed asked for the agreement and stalled. The Medhat close is conditional on incorporating within 60 days.</p><p>Build owns Setup. Staffing has recommended the Egyptian legal kit. I can brief Build to start today.</p>',tools:['Asking Build for Setup status','Asking Deal Flow which deals are blocked'],chips:['Brief Build on Setup','Show the legal kit']},
+  'Why is legal the binding constraint?':{t:'<p>Because it is the one gap that stops money arriving, whatever else improves.</p><p>There is no entity, no IP assignment and no signed founders agreement. Sherif Adel has committed and cannot invest. Delta Seed asked for the agreement and stalled. The Medhat close is conditional on incorporating within 60 days.</p><p>Build owns Setup. Staffing has recommended the Egyptian company law kit. I can brief Build to start today.</p>',tools:['Asking Build for Setup status','Asking Deal Flow which deals are blocked'],chips:['Brief Build on Setup','Show the legal kit']},
   'Brief me on the raise':{t:'<p>EGP 600K closed of a EGP 3.2M target, from Medhat Family Office, conditional on incorporation.</p><p>Eight deals are active. Levant and Cairo Impact are negotiating. Cairo Impact is on hold until 30 Sep for a quarter of impact data. Delta Seed has stalled for three weeks at Disclose.</p><p>Deal Flow suggests following up with Delta Seed once the founders agreement exists, not before.</p>',tools:['Asking Deal Flow for pipeline state'],chips:['Open pipeline']},
   'Who is working on what?':{t:'<p><b>Build</b> is on the tactical plan, business intelligence section. <b>Deal Terms</b> has reviewed 16 terms and flagged 4. <b>Deal Flow</b> is chasing follow-ups. <b>Market</b> is watching six sources. <b>Presence</b> is waiting on you. <b>Identity</b> is blocked on Yasmine. <b>Assessment</b> is idle until a customer pays.</p>'}},
  build:{
-  'Why is year 3 above my SOM?':{t:'<p>Your year 3 revenue is EGP 3.95M. Your serviceable obtainable market is EGP 2.50M. That is 158%.</p><p>One of three things is wrong: the SOM is too tight, the price assumption is too high, or the year 3 customer count assumes buyers outside your segment. I will not cap it for you, because each fix tells an investor something different.</p>',tools:['Reading Sanad financial model v4.xlsx','Comparing against Validation sizing'],chips:['Show me the customer count assumption','Is the SOM too tight?']},
-  'Find the holes in my data room':{t:'<p>I ran the analysis an investor would run. Three holes:</p><p><b>No signed founders agreement.</b> Every investor who reaches Disclose asks for it.<br><b>No evidence of current revenue.</b> The two invoices are from 2025.<br><b>A contradiction in the model.</b> Year 3 revenue exceeds your SOM.</p><p>The first one is cheap to fix and unblocks two deals.</p>',tools:['Opening the data room, 14 documents','Running investor-grade review'],chips:['Start Setup']}},
+  'Why is year 3 above my SOM?':{out:{kind:'Venture record',title:'Financial plan',sub:'Build · 36-month model',vf:{stage:'s7'}},t:'<p>Your year 3 revenue is EGP 3.95M. Your serviceable obtainable market is EGP 2.50M. That is 158%.</p><p>One of three things is wrong: the SOM is too tight, the price assumption is too high, or the year 3 customer count assumes buyers outside your segment. I will not cap it for you, because each fix tells an investor something different.</p>',tools:['Reading Sanad financial model v4.xlsx','Comparing against Validation sizing'],chips:['Show me the customer count assumption','Is the SOM too tight?']},
+  'Find the holes in my data room':{out:{kind:'Analysis',title:'Data room self-diligence',sub:'3 gaps found',html:()=>OUTS.holes()},t:'<p>I ran the analysis an investor would run. Three holes:</p><p><b>No signed founders agreement.</b> Every investor who reaches Disclose asks for it.<br><b>No evidence of current revenue.</b> The two invoices are from 2025.<br><b>A contradiction in the model.</b> Year 3 revenue exceeds your SOM.</p><p>The first one is cheap to fix and unblocks two deals.</p>',tools:['Opening the data room, 14 documents','Running investor-grade review'],chips:['Start Setup']}},
  dealterms:{
-  'What should I push back on in the Levant term sheet?':{t:'<p>One term matters. Three are standard.</p><p><b>Push back: the 12% option pool is pre-money.</b> It comes out of your side only. Moving it post-money, or sizing it to the hires in your phase 1 plan, is a normal ask.</p><p>Standard: 1x non-participating preference, broad-based weighted average anti-dilution, EGP 9.0M pre-money.</p><p><b>Think about: drag-along.</b> It is standard, but the unresolved founder exit disagreement makes it material for you.</p><p>I have drafted the pushback from a counsel-cleared template. Nothing goes to Levant until you approve it.</p>',tools:['Reading the Levant term sheet','Benchmarking 16 terms'],chips:['Model the 12% pool post-money','Show me the draft']},
-  'Model the 12% pool post-money':{t:'<p>On EGP 3.2M at EGP 9.0M pre, Levant holds 26.2% after the round.</p><p>With the pool pre-money, the founders absorb all 12 points before the investment. Post-money, the dilution is shared with Levant. On these numbers that returns about 3 points to the founders.</p>',tools:['Running ownership model'],card:'own'}},
+  'What should I push back on in the Levant term sheet?':{out:{kind:'Terms',title:'Term sheet review',sub:'Levant · 16 terms · 4 flagged',html:()=>OUTS.terms(),draft:'draft'},t:'<p>One term matters. Three are standard.</p><p><b>Push back: the 12% option pool is pre-money.</b> It comes out of your side only. Moving it post-money, or sizing it to the hires in your phase 1 plan, is a normal ask.</p><p>Standard: 1x non-participating preference, broad-based weighted average anti-dilution, EGP 9.0M pre-money.</p><p><b>Think about: drag-along.</b> It is standard, but the unresolved founder exit disagreement makes it material for you.</p><p>I have drafted the pushback from a counsel-cleared template. Nothing goes to Levant until you approve it.</p>',tools:['Reading the Levant term sheet','Benchmarking 16 terms'],chips:['Model the 12% pool post-money','Show me the draft']},
+  'Model the 12% pool post-money':{out:{kind:'Model',title:'Ownership model',sub:'Pool pre- vs post-money',html:()=>OUTS.own()},t:'<p>On EGP 3.2M at EGP 9.0M pre, Levant holds 26.2% after the round.</p><p>With the pool pre-money, the founders absorb all 12 points before the investment. Post-money, the dilution is shared with Levant. On these numbers that returns about 3 points to the founders.</p>',tools:['Running ownership model']}},
  dealflow:{'Who should I follow up with this week?':{t:'<p>Three, in this order. <b>Osman Group</b>, first call on 5 Sep. <b>Karim Farouk</b>, depot visit on 6 Sep. <b>Amal Ventures</b>, teaser due 4 Sep.</p><p>Delta Seed can wait until the founders agreement exists. Following up without it repeats the question they stalled on.</p>',chips:['Draft a teaser for Amal Ventures','Open pipeline']},
-  'Draft a teaser for Amal Ventures':{t:'<p>Draft ready. It covers the problem, the 34 nameable buyers, the 11 interviews and the ask. It does not include the deck, because Layla asked for the teaser only.</p><p>I will not send it. Approve it and it goes from your Gmail, logged against the deal.</p>',tools:['Drafting from the venture profile'],confirm:'Send the teaser to Layla Mansour at Amal Ventures?'}},
+  'Draft a teaser for Amal Ventures':{out:{kind:'Draft',title:'Teaser · Amal Ventures',sub:'1 page · from the venture profile',html:()=>OUTS.teaser(),draft:'draft'},t:'<p>Draft ready. It covers the problem, the 34 nameable buyers, the 11 interviews and the ask. It does not include the deck, because Layla asked for the teaser only.</p><p>I will not send it. Approve it and it goes from your Gmail, logged against the deal.</p>',tools:['Drafting from the venture profile'],confirm:'Send the teaser to Layla Mansour at Amal Ventures?'}},
  staffing:{},assessment:{
-  'Walk me through the 60/100':{t:'<p>The first read was 48 at 0.38 confidence. The reassessment is 60 at 0.71.</p><p>Most of the gain is confidence: the 11 interviews and the counted buyer list replaced estimates. Three measures stay excluded because each needs a paying customer. I score what the evidence supports and nothing more.</p>',tools:['Opening the scorecard'],chips:['What would move my score most?']},
+  'Walk me through the 60/100':{out:{kind:'Venture record',title:'Venture Assessment',sub:'60 / 100 · confidence 0.71',vf:{stage:'s2'}},t:'<p>The first read was 48 at 0.38 confidence. The reassessment is 60 at 0.71.</p><p>Most of the gain is confidence: the 11 interviews and the counted buyer list replaced estimates. Three measures stay excluded because each needs a paying customer. I score what the evidence supports and nothing more.</p>',tools:['Opening the scorecard'],chips:['What would move my score most?']},
   'What would move my score most?':{t:'<p>A paying customer. It unlocks the three excluded measures at once and is the strongest signal for viability, your lowest dimension.</p><p>After that, the founders agreement, because team is scored inside feasibility.</p>'}},
- identity:{'Invite Yasmine to record her profile':{t:'<p>I have drafted a short invitation. It takes about 10 minutes and replaces the proxy record you entered for her.</p><p>Adding someone changes who can see what, so I need your confirmation first.</p>',confirm:'Invite Yasmine Fouad as a founder with access to Sanad?'}},
+ identity:{'Invite Yasmine to record her profile':{out:{kind:'Profile',title:'Founder record',sub:'Team · 3 founders',html:recordHTML},t:'<p>I have drafted a short invitation. It takes about 10 minutes and replaces the proxy record you entered for her.</p><p>Adding someone changes who can see what, so I need your confirmation first.</p>',confirm:'Invite Yasmine Fouad as a founder with access to Sanad?'}},
  market:{'What changed in cold-chain this week?':{t:'<p>One item worth your time. The draft GDP guidance names temperature logging for last-mile delivery. I chose it because that is your core claim. Build has it in the knowledge base now.</p>',tools:['Checking 6 curated sources']}},
- presence:{'Show the two drafts':{t:'<p><b>Draft 1, pilot results.</b> Short post on what the supervisor scan caught in the pilot, marked "evidence on record" where it links to your data.</p><p><b>Draft 2, founder note.</b> Why you left distribution operations to build this.</p><p>Neither mentions the raise. Nothing posts until you approve.</p>',confirm:'Publish draft 1 to your LinkedIn page?'}},
- investorrel:{'Draft the first update to Medhat Family Office':{t:'<p>Drafted from work already on the record: the close, the incorporation timeline and the next milestone. It shares nothing new. You release it.</p>',confirm:'Release the update to Medhat Family Office?'}}
+ presence:{'Show the two drafts':{out:{kind:'Draft',title:'Presence drafts',sub:'2 drafts · nothing posts without you',html:()=>OUTS.drafts(),draft:'draft'},t:'<p><b>Draft 1, pilot results.</b> Short post on what the supervisor scan caught in the pilot, marked "evidence on record" where it links to your data.</p><p><b>Draft 2, founder note.</b> Why you left distribution operations to build this.</p><p>Neither mentions the raise. Nothing posts until you approve.</p>',confirm:'Publish draft 1 to your LinkedIn page?'}},
+ investorrel:{'Draft the first update to Medhat Family Office':{out:{kind:'Draft',title:'Holder update',sub:'Medhat Family Office',html:()=>OUTS.update(),draft:'draft'},t:'<p>Drafted from work already on the record: the close, the incorporation timeline and the next milestone. It shares nothing new. You release it.</p>',confirm:'Release the update to Medhat Family Office?'}}
 };
 const GREET={
  aether:'Good to see you. Four things need you today. Ask me anything, or tell me what you want done and I will route it.',
@@ -1302,15 +1523,16 @@ const GREET={
  presence:'Two drafts are waiting. Nothing leaves without your approval.'
 };
 let CH=null;
-function openChat(k,spec,flow){
- const a=AG[k];
+function openChat(k,spec,flow,opt){
+ opt=opt||{};const a=AG[k];
  const head='<div style="display:flex;align-items:center;gap:12px;min-width:0"><span class="av" style="width:40px;height:40px;flex-basis:40px"><img src="'+img(k)+'" alt=""></span><div style="min-width:0"><h2 style="font-size:17px">'+a.n+(spec?' <span style="color:var(--graph);font-weight:400">› '+spec+'</span>':'')+'</h2><div class="sub">'+(flow==='onboarding'?'Onboarding':flow==='assessment'?'Venture assessment':flow==='plan'?'Team and plan':a.role)+'</div></div></div>';
  const raw='<div class="chat"><div class="chat-scroll"><div class="chat-col" id="ccol"><div class="chat-intro"><div class="portrait"><img src="'+img(k)+'" alt=""></div><h2>'+(spec||a.n)+'</h2><p>'+(spec?(a.subs.find(x=>x[0]===spec)||['',''])[1]+' Working inside '+a.n+'.':a.d)+'</p></div></div></div>'+
   '<div class="composer-row"><div class="composer-wrap"><div class="thinker" id="thk"><span class="bubble"><i></i><i></i><i></i></span><img src="'+img(k)+'" alt=""></div>'+
   '<div class="composer" id="cmp"><div class="composer-in"><button class="cbtn" aria-label="Attach" onclick="toast(\'Attach a file: it goes to the knowledge base first.\')">'+I.clip+'</button><textarea id="cin" rows="1" placeholder="Message '+a.n+'…"></textarea><button class="cbtn send" id="csend" aria-label="Send">'+I.send+'</button></div></div></div>'+
-  '<div class="c-foot">'+a.n+' asks before anything leaves the platform. Replies here are a scripted demo.</div></div></div>';
- const el=ovShell({head,raw});
- CH={k,spec,flow,el,col:$('#ccol',el),busy:false,step:0};
+  '<div class="c-foot">'+(opt.entry!=null?ENTRY_FOOT[opt.entry]:a.n+' asks before anything leaves the platform. Replies here are a scripted demo.')+'</div></div></div>';
+ const el=ovShell({head,raw:'<div class="chat-wrap">'+raw+'<aside class="outp" aria-label="Output"><div class="outp-h"><div class="outp-t"><span class="lbl" id="outK">Output</span><b id="outT">—</b><span id="outS"></span></div><button class="icb" id="outMax" aria-label="Expand output">'+I.expand+'</button><button class="icb" id="outX" aria-label="Close output">'+I.x+'</button></div><div class="outp-bar" id="outBar" hidden></div><div class="outp-b" id="outB"></div></aside></div>',entry:opt.entry});
+ CH={k,spec,flow,el,col:$('#ccol',el),busy:false,step:0,entry:opt.entry};
+ $('#outX',el).onclick=outClose;$('#outMax',el).onclick=()=>$('.chat-wrap',el).classList.toggle('max');
  el._close=()=>{CH=null;};
  const ta=$('#cin',el);
  ta.addEventListener('input',()=>{ta.style.height='auto';ta.style.height=Math.min(ta.scrollHeight,160)+'px';});
@@ -1319,7 +1541,7 @@ function openChat(k,spec,flow){
  function send(){const v=ta.value.trim();if(!v||CH.busy)return;ta.value='';ta.style.height='auto';userSay(v);respond(v);}
  if(flow)FLOWS[flow](0);
  else{const sp=spec?'<p>You opened <b>'+spec+'</b>. '+(a.subs.find(x=>x[0]===spec)||['',''])[1]+'</p><p>What would you like to work on?</p>':'<p>'+GREET[k]+'</p>';
-  agentSay(sp,{chips:a.chips,fast:1});}
+  agentSay(sp,{chips:a.chips,fast:1,out:SPEC_OUT(k,spec)});}
 }
 function msgEl(me,k){const d=document.createElement('div');d.className='msg'+(me?' me':'');
  d.innerHTML=me?'<div class="tx"></div>':'<span class="who"><img src="'+img(k)+'" alt=""></span><div class="body"><div class="nm">'+AG[k].n.toUpperCase()+(CH.spec?' <span>› '+CH.spec+'</span>':'')+'</div><div class="tools"></div><div class="tx"></div></div>';
@@ -1335,6 +1557,7 @@ async function agentSay(html,o){o=o||{};const ch=CH;if(!ch)return;setBusy(true);
  tx.innerHTML=html;
  const words=[];(function walk(n){[...n.childNodes].forEach(c=>{if(c.nodeType===3){const parts=c.textContent.split(/(\s+)/);const f=document.createDocumentFragment();parts.forEach(p=>{if(!p)return;if(/^\s+$/.test(p))f.appendChild(document.createTextNode(p));else{const s=document.createElement('span');s.textContent=p;s.style.opacity=0;s.style.transition='opacity .25s';f.appendChild(s);words.push(s);}});c.replaceWith(f);}else walk(c);});})(tx);
  for(let i=0;i<words.length;i++){words[i].style.opacity=1;if(i%3===0){await sleep(o.fast?10:22);if(i%30===0)scrollChat();}}
+ if(o.out){const oc=o.out,c=document.createElement('button');c.className='ocard';c.innerHTML='<span class="oc-ic">'+I.doc+'</span><span class="oc-t"><b>'+oc.title+'</b><small>'+(oc.sub||'')+'</small></span><span class="oc-go">Open '+I.arr+'</span>';$('.body',d).appendChild(c);c.onclick=()=>outOpen(oc);if(oc.auto!==false&&innerWidth>900)setTimeout(()=>outOpen(oc),250);}
  if(o.card){const c=document.createElement('div');c.className='card';c.innerHTML=typeof o.card==='function'?o.card():CARDS[o.card]();$('.body',d).appendChild(c);if(o.after)o.after(c);}
  if(o.confirm){const c=document.createElement('div');c.className='confirm';c.innerHTML='<b>Needs your approval.</b> <span>'+o.confirm+'</span><span style="flex:1"></span><button class="mini">Approve</button><button class="mini ghost">Not now</button>';
   $('.body',d).appendChild(c);const [y,n]=$$('button',c);y.onclick=()=>{c.innerHTML='<b style="color:var(--up)">Approved.</b> <span>Logged on the record with time and reason. In this prototype nothing is sent.</span>';};n.onclick=()=>{c.innerHTML='<span>Held. Nothing was sent.</span>';};}
@@ -1360,37 +1583,85 @@ function kitsHTML(){return '<div class="kits">'+KITS.map(x=>'<div class="kit"><s
 
 /* scripted flows: onboarding (Identity), assessment (Assessment), plan (Staffing) */
 const FLOWS={
+ /* Onboarding · Identity · founders first, nine sections per founder */
  async onboarding(){
-  const ask=(t,chips,o)=>new Promise(res=>agentSay(t,Object.assign({chips,onChip:(c)=>{userSay(c);res(c);}},o||{})));
-  await ask('<p>Hello. I am <b>Identity</b>. I keep a current record of you and your co-founders, so your team never has to ask twice.</p><p>Let us start with you. What should I call you?</p>',['Nour Halim'],{fast:1});
-  const st=await ask('<p>Thanks, Nour. Which describes the venture best right now?</p>',['An idea I am testing','Building a product','Selling to first customers','Raising a round']);
-  await ask('<p>Got it: <b>'+st.toLowerCase()+'</b>. Who founded it with you?</p>',['Karim Adly and Yasmine Fouad','Just me']);
-  await ask('<p>I will invite each of them to record their own profile. Until they do, anything you tell me about them is marked as a proxy record.</p><p>Connect LinkedIn and I can prefill your work history.</p>',['Connect LinkedIn','Skip for now']);
-  await agentSay('<p>Prefilled from your profile: <b>11 years inside pharmaceutical distribution operations</b>. Check it in your profile any time.</p>',{tools:['Reading 1 connected profile','Extracting work history']});
-  await ask('<p>One permission, asked once. May QuidQuo use your anonymised data to improve its models? It stays off unless you turn it on, and saying no costs you nothing.</p>',['Keep it off','Turn it on']);
-  await ask('<p>Saved. Your profile is at <b>version 1</b>. Next, Assessment reads what you have and scores the venture.</p>',['Start the assessment']);
-  FLOWS.assessment(0);
+  const ask=(t,chips,o)=>new Promise(res=>agentSay(t,Object.assign({chips,onChip:c=>{userSay(c);res(c);}},o||{})));
+  const recOut=()=>({kind:'Profile',title:'Founder record',sub:'Building as you answer',html:recordHTML,auto:true});
+  REC.v=0;REC.s={};REC.founders=[];
+  const mode=await new Promise(res=>agentSay('<p>I am <b>Identity</b>. Before anything is assessed, the platform needs to know who is building it, and whether it is one venture or several.</p><p>Which are you?</p>',{fast:1,card:()=>'<div class="pick2"><button data-m="single"><b>A single venture</b><small>One business. I capture every founder, then hand over for one assessment.</small></button><button data-m="org"><b>A portfolio or organisation</b><small>Several ventures. The organisation is captured first, then each venture is assessed on its own.</small></button></div>',
+   after:c=>$$('[data-m]',c).forEach(b=>b.onclick=()=>{if(CH.busy)return;c.remove();userSay(b.querySelector('b').textContent);res(b.dataset.m);})}));
+  if(mode==='org'){
+   await ask('<p>Then the order changes. <b>The organisation is captured first</b>, because it holds the capital and makes the calls. Then you as the decision maker, then each venture separately. A portfolio score would average away the venture in trouble.</p><p>Read from the company registry: <b>Halim Ventures</b>, Cairo, three ventures held directly. When a venture needs capital, who signs it off?</p>',['A single partner','An investment committee','Case by case'],{tools:['Reading the company registry']});
+   await ask('<p>Recorded. That decides who I escalate a blocked venture to. Of the three ventures, only one has filed accounts. Which is your priority?</p>',['Sanad','Medad','Rafiq']);
+   await agentSay('<p>Sanad first. The other two stay in the portfolio and can be onboarded whenever you want. The organisation record is not a substitute for a founder record, so now the founders.</p>',{fast:1});}
+  const n=await ask('<p>Before I ask you anything about yourself, I need to know <b>how many founders hold equity</b>. I run the same nine sections for each of you separately. A record built from one founder describing the others is the most common gap I see, and investors find it immediately.</p>',['1 founder','2 founders','3 founders','4 founders']);
+  const cnt=parseInt(n)||3,pre=['Nour Halim','Karim Adly','Yasmine Fouad','Omar Said'];
+  await new Promise(res=>agentSay('<p>Names, so I can keep the records apart and tell you which one is thin.</p>',{card:()=>'<form class="frm" id="fnF">'+Array.from({length:cnt},(_,i)=>'<label>Founder '+(i+1)+(i===0?' (you)':'')+'<input value="'+(pre[i]||'')+'" placeholder="Full name"></label>').join('')+'<button class="btn pri" type="submit">Continue</button></form>',
+   after:c=>{$('#fnF',c).onsubmit=e=>{e.preventDefault();const names=$$('input',c).map((x,i)=>x.value.trim()||'Founder '+(i+1));REC.founders=names.map((x,i)=>({n:x,st:i===0?'active':'pending'}));c.remove();userSay(names.join(', '));res();};}}));
+  if(REC.founders[1])REC.founders[1].st='direct';
+  await agentSay('<p>Recorded. '+(REC.founders[1]?'<b>'+REC.founders[1].n+'</b> recorded his own profile two days ago, so his nine sections are already on file. ':'')+'Starting with you, '+REC.founders[0].n.split(' ')[0]+'.</p><p>Anyone I cannot reach directly can be invited to record their own profile, or captured by proxy. A proxy record is marked as such for good.</p>',{out:recOut()});
+  // section 1 · channels
+  await new Promise(res=>agentSay('<div class="sec-k">Section 1 · connected channels</div><p>Channels first, because every fact a channel gives me is a question you do not answer and a claim I do not take on trust. LinkedIn is the most useful single connection.</p>',{card:()=>'<div class="chans">'+[['li','LinkedIn'],['ig','Instagram'],['fb','Facebook'],['x','X'],['sb','Substack']].map(c=>'<button data-c="'+c[0]+'"'+(c[0]==='li'?' class="on"':'')+'><span>'+c[0].toUpperCase()+'</span>'+c[1]+'</button>').join('')+'</div><button class="btn pri" id="chGo" style="margin-top:10px">Continue</button>',
+   after:c=>{$$('[data-c]',c).forEach(b=>b.onclick=()=>b.classList.toggle('on'));$('#chGo',c).onclick=()=>{const on=$$('[data-c].on',c).map(b=>b.textContent.slice(2));if(!on.length){toast('Connect at least one');return;}c.remove();userSay('Connected '+on.join(', '));REC.s[1]=['v',on.join(', ')+' connected'];REC.s[6]=['u','From '+on.join(', ')];outRefresh();res();};}}));
+  const F=[
+   [2,'Section 2 · profile','<p>Read. From LinkedIn I have <b>11 years in pharmaceutical distribution operations</b>, ending as operations manager at a 60-vehicle distributor. Six years of that is verifiable from the public record; the rest is your account of it.</p><p>I record those differently and I will keep doing so. What did you actually do there: not the title, the work?</p>',['Ran the cold-chain fleet','Managed the depot floor','Both, plus compliance'],'v',['Reading 1 connected profile']],
+   [4,'Section 4 · skills','<p>Recorded. Now skills: eight functions, five levels each. I am asking what you can do <b>without help</b>, which is different from what you have been responsible for. Take fundraising. Have you personally raised money before?</p>',['No, never','Once, unsuccessfully','Yes'],'u'],
+   [5,'Section 5 · character and mindset','<p>Marked as a gap, not a weakness. It is the most common one at this stage.</p><p>Different kind of question now. On a normal Tuesday, <b>what takes up most of your day?</b></p>',['Talking to operators','Building the product','Chasing paperwork'],'c'],
+   [5,'Section 5 · character and mindset','<p>Noted. When the last customer stopped paying, what was the first thing you did?</p>',['Called them and asked why','Looked at the product','Started looking for the next customer'],'c'],
+   [7,'Section 7 · venture direction','<p>Recorded. I am not going to tell you what those two questions measure, because knowing changes the answer. It is on your file and you can read it.</p><p>Imagine this works. Four years from now the business is doing well. <b>What does your own day look like?</b> Not the company: you.</p>',['Running something bigger','Sold it, doing the next thing','Same work, more of it'],'u'],
+   [8,'Section 8 · team view','<p>Recorded, and I am going to flag it rather than sit on it. Karim answered the same question two days ago. He described <b>still running this in four years</b>, with a team around him.</p><p>Neither answer is wrong. But that conversation has not happened, and it will surface in the founders agreement. How do the founders divide the work?</p>',['Clearly split','Overlapping','Mostly me'],'f'],
+   [9,'Section 9 · constraint set','<p>Recorded. Last section, and the one that binds every plan downstream. Anything that is simply fixed: money, time, geography, an obligation?</p>',['Karim is part-time to month 6','No capital to put in','Cairo only'],'u']];
+  for(const [sec,lab,txt,ch,kind,tools] of F){const ans=await ask('<div class="sec-k">'+lab+'</div>'+txt,ch,{tools});
+   if(sec===2){REC.s[2]=['u',ans];REC.s[3]=['v','11 years in pharmaceutical distribution · 6 verifiable'];}
+   else if(sec===5)REC.s[5]=['c','Recorded · reading on file'];
+   else REC.s[sec]=[sec===8?'f':kind,sec===7&&ans.startsWith('Sold')?ans:ans];
+   if(sec===4&&!REC.s[4])REC.s[4]=['u',ans];REC.v=1;outRefresh();}
+  REC.founders[0].st='direct';outRefresh();
+  // remaining founders
+  for(const f of REC.founders.slice(2)){
+   const c=await ask('<p><b>'+f.n+'</b> next. I cannot reach them from here. I can send a short invitation so they record their own profile, which takes about 10 minutes, or you can describe them now and I capture them by proxy.</p><p>A proxy record has no character reading at all, because a second-hand answer to an indirect question measures you, not them.</p>',['Send '+f.n.split(' ')[0]+' an invitation','Capture by proxy']);
+   f.st=c.startsWith('Send')?'invited':'proxy';outRefresh();
+   await agentSay(f.st==='invited'?'<p>Invitation drafted. Adding someone changes who can see what, so it waits for your confirmation in Profile. Until they finish, their record shows as invited.</p>':'<p><b>'+f.n+' recorded by proxy.</b> Profile, background and equity come from you; skills are marked unverified. This is a real gap and it stays on the file. Investors ask about it.</p>',{fast:1});}
+  await ask('<p><b>'+(REC.founders.length>1?'All '+REC.founders.length+' founders':'Your founder record is')+' on file.</b> '+REC.founders.filter(f=>f.st==='proxy').length+' by proxy, '+REC.founders.filter(f=>f.st==='invited').length+' invited. Your record is at version 1.</p><p>Next, Assessment reads what you have and scores the venture.</p>',['Continue to Venture Assessment']);
+  nextEntry('assessment');
  },
+ /* Venture Assessment · four dimensions, evidence gate, Finding */
  async assessment(){
-  const ask=(t,chips,o)=>new Promise(res=>agentSay(t,Object.assign({chips,onChip:(c)=>{userSay(c);res(c);}},o||{})));
-  await ask('<p>I am <b>Assessment</b>. Give me what you have: a deck, interview notes, invoices, a model. I score only what the evidence supports, and I tell you what I left out.</p>',['Use these 6 documents'],{as:'assessment',card:()=>'<div class="drop">Drop files here, or pick from your connected Drive</div><div class="files">'+FILES.filter(f=>['customer','market'].includes(f.f)).slice(0,6).map(f=>'<div class="fl"><span class="ty">'+f.t+'</span>'+f.n+'<span class="s">'+f.s+'</span></div>').join('')+'</div>'});
-  await agentSay('<p>First read of Sanad. Scores sit on four dimensions, each with its own confidence.</p>',{as:'assessment',tools:['Extracting 6 documents','Tagging evidence as your own or public','Scoring desirability','Scoring viability','Scoring feasibility','Scoring impact'],
+  const ask=(t,chips,o)=>new Promise(res=>agentSay(t,Object.assign({chips,onChip:c=>{userSay(c);res(c);}},o||{as:'assessment'})));
+  const evOut=files=>({kind:'Evidence',title:'What Assessment read',sub:files+' documents · tagged own or public',html:()=>'<h3>Evidence received</h3><p class="od-s">Every document is tagged as your own material or market and public, so an investor can see what rests on what.</p>'+[['Sanad pitch deck v3.pdf','own'],['Regulator licence register extract.xlsx','pub'],['Distributor directory 2026.pdf','pub'],['Customer A invoice.pdf','own'],['Customer B invoice.pdf','own'],['Financial projections.xlsx','own']].map(f=>'<div class="od-row"><span class="ty2">'+(f[1]==='own'?'OWN':'PUB')+'</span><div><b>'+f[0]+'</b></div></div>').join('')+
+   '<h4 style="margin-top:16px">Recalculated from source</h4><div class="od-tw"><table><thead><tr><th>Figure</th><th>You stated</th><th>Calculated</th></tr></thead><tbody><tr class="warn"><td>Market size</td><td class="mono">EGP 340M</td><td class="mono">EGP 17.0M</td></tr><tr class="warn"><td>Serviceable market</td><td class="mono">not stated</td><td class="mono">EGP 7.43M</td></tr></tbody></table></div>',auto:true});
+  const c0=await new Promise(res=>agentSay('<p>I am <b>Assessment</b>. I score the venture on four dimensions, desirability, viability, feasibility and impact, against what is normal at your stage.</p><p>Two things before we start. <b>Where I have no data I record a gap rather than estimating one.</b> And where I cannot evidence a measure I exclude it rather than scoring it zero: that lowers my confidence, not your score.</p><p>Upload everything you have. Incomplete is fine; I would rather see what exists than a tidied version.</p>',{as:'assessment',fast:1,card:()=>'<button class="drop3" id="dz"><span class="dz-ic">'+I.plus+'</span><span><b>Drop files here, or click to browse</b><small>PDF · DOCX · XLSX · PPTX</small></span></button><button class="mini ghost" id="nodoc" style="margin-top:8px">I do not have documents yet</button>',
+   after:c=>{$('#dz',c).onclick=()=>{c.remove();res('docs');};$('#nodoc',c).onclick=()=>{c.remove();res('none');};}}));
+  if(c0==='none'){userSay('I do not have documents yet.');
+   const g=await ask('<p>That is fine. I can still score Sanad from your onboarding record and your answers, every dimension, with an honest confidence figure.</p><p>What I cannot do is give you a <b>Finding</b>: a claim specific to Sanad that I can stand behind. Without your own material there is nothing particular to stand on.</p><p>What would let me find one: <b>a customer invoice or contract</b>, <b>your financial projections</b>, and <b>a list of the buyers you could reach</b>.</p>',['Continue with a generic profile','Upload documents now']);
+   if(g==='Continue with a generic profile'){const e=await ask('<p>Done. <b>Generic profile, 44 out of 100, at confidence 0.21.</b> Scored to the same standard a paid assessment would use. There is no Finding: there was no material specific enough to stand behind one.</p>',['See your recommended team','Upload documents now'],{as:'assessment',tools:['Scoring from your onboarding record']});
+    if(e==='See your recommended team')return nextEntry('kit');}}
+  else userSay('Uploaded 6 files');
+  await ask('<p>Received, 6 documents. I have read all of them. Before I score anything, I recalculated your figures from source rather than accepting them. Two disagree with your deck.</p><p>The EGP 340M is the entire Egyptian pharmaceutical logistics market. Counting the organisations that could actually buy this, from the register you uploaded, gives <b>EGP 17.0M</b>. That is a <b>20× difference</b>. I am not scoring you down for it, but every number after this uses the counted figure.</p><p>One question I cannot answer from the documents: <b>are your two customers still paying?</b></p>',['No, both churned','Yes, both active','One renewed'],{as:'assessment',tools:['Extracting 6 documents','Tagging evidence as own or public','Recalculating figures from source'],out:evOut(6)});
+  await ask('<p>Thank you for saying so plainly. Recurring revenue is zero, so I am placing you at <b>Prototype</b> rather than Revenue Generation. And <b>demand durability cannot be scored at all</b>: I am excluding it rather than scoring it zero.</p><p>One follow-up, because it decides whether I can stand behind a finding about your pricing. Both invoices say “pilot engagement, fixed fee”, but your projections bill EGP 650 per vehicle per month. <b>Was either customer ever billed per vehicle?</b></p>',['No, both were fixed-fee pilots','Yes, one was per vehicle','I am not sure']);
+  await agentSay('<p>Verified against both invoices and the revenue sheet: neither customer was ever billed on the subscription. That is enough for a <b>Finding</b>, a claim specific to Sanad from your own material. It passed all five tests of the evidence gate.</p>',{as:'assessment',tools:['Running the evidence gate'],fast:1});
+  await agentSay('<p>Done. <b>48 out of 100, at confidence 0.38.</b> The low confidence is the more important number: most of what pulled it down is absence of evidence rather than weakness in the business. Nine measures could not be scored.</p><p>And one <b>Finding</b>: nobody has yet paid for the subscription your model sells. It is delivered in full, free, the same as on any tier.</p>',{as:'assessment',tools:['Scoring desirability','Scoring viability','Scoring feasibility','Scoring impact','Classifying stage','Deriving capability need'],
    card:()=>'<div class="dims">'+[['Desirability',58,.52],['Viability',41,.31],['Feasibility',52,.40],['Impact',44,.29]].map(d=>'<div class="dim"><div class="lbl">'+d[0]+'</div><div class="v" data-v="'+d[1]+'">0</div><div class="c">confidence '+d[2].toFixed(2)+'</div><div class="bar"><i data-w="'+d[1]+'"></i></div></div>').join('')+'</div>',
-   after:c=>{setTimeout(()=>{$$('.bar i',c).forEach(i=>i.style.width=i.dataset.w+'%');$$('.v',c).forEach(v=>{const n=+v.dataset.v;let x=0;const t=setInterval(()=>{x+=2;v.textContent=Math.min(x,n);if(x>=n)clearInterval(t);},22);});},100);}});
-  await ask('<p>Overall <b>48 / 100 at 0.38 confidence</b>. Nine measures excluded for want of evidence, which is normal at this stage.</p><p>The Finding cleared the gate: <b>the venture sells to a counted market of 34 buyers but has no current paying customer</b>. The capability need is legal and structure, and founder distribution capability.</p>',['See my team recommendation','Why is viability lowest?'],{as:'assessment'}).then(c=>{if(c==='See my team recommendation')FLOWS.plan(0);else agentSay('<p>Viability asks whether the money works. Your only revenue evidence is two invoices from 2025, and the model has a contradiction in year 3. Both pull the score and its confidence down.</p>',{as:'assessment',chips:['See my team recommendation'],onChip:c=>{userSay(c);FLOWS.plan(0);}});});
+   after:c=>setTimeout(()=>{$$('.bar i',c).forEach(i=>i.style.width=i.dataset.w+'%');$$('.v',c).forEach(v=>{const n=+v.dataset.v;let x=0;const t=setInterval(()=>{x+=2;v.textContent=Math.min(x,n);if(x>=n)clearInterval(t);},22);});},100),
+   out:{kind:'Venture record',title:'Initial Venture Assessment · Sanad',sub:'48 / 100 · confidence 0.38 · Finding included',vf:{stage:'s2'}}});
+  const n=await ask('<p>The capability need is <b>legal and structure</b>, and <b>founder distribution capability</b>. Staffing reads that and recommends the team that fits it.</p>',['See your recommended team']);
+  nextEntry('kit');
  },
+ /* Purchase · Staffing · conversational staffing, screen-leaning checkout */
  async plan(){
-  const ask=(t,chips,o)=>new Promise(res=>agentSay(t,Object.assign({chips,onChip:(c)=>{userSay(c);res(c);}},o||{as:'staffing'})));
-  const tier=await new Promise(res=>agentSay('<p>I am <b>Staffing</b>. From your assessment, this is the team I recommend. A tier is what you subscribe to. Kits equip a senior for a specific job. Capacity is shown separately and is never sold as a kit.</p>',{as:'staffing',card:()=>'<div class="tiers">'+PLANS.map((p,i)=>'<button class="tier'+(p.rec?' rec':'')+'" data-i="'+i+'"><h4>'+p.n+'</h4><div class="p">'+p.p+' <small>/ month</small></div><div style="font-size:12.5px;color:var(--graph)">'+p.d+'</div><ul>'+p.f.map(x=>'<li>'+x+'</li>').join('')+'</ul></button>').join('')+'</div>',
-   after:c=>$$('.tier',c).forEach(b=>b.onclick=()=>{if(CH.busy)return;$$('.tier',c).forEach(x=>x.style.opacity=x===b?1:.45);userSay('Choose '+PLANS[+b.dataset.i].n);res(PLANS[+b.dataset.i]);})}));
-  const below=tier.n==='Foundation';
-  await ask('<p><b>'+tier.n+'</b> it is.'+(below?' One note, said once: Foundation does not include Deal Flow or Deal Terms, and you have a live term sheet.':'')+'</p><p>Two kits would cover gaps Assessment named. Add either now, or later.</p>',['Add Egyptian legal','No kits for now'],{as:'staffing',card:()=>kitsHTML()}).then(async c=>{
-   const total=c==='Add Egyptian legal'?(parseInt(tier.p.replace(/\D/g,''))+2200).toLocaleString():tier.p.replace('EGP ','');
-   await agentSay('<p>Your plan: <b>'+tier.n+(c==='Add Egyptian legal'?' + Egyptian legal kit':'')+'</b>, EGP '+total+' per month.</p><p>I never complete a payment for you. Approve it and checkout opens for you to confirm.</p>',{as:'staffing',confirm:'Open checkout for EGP '+total+' / month?'});
-  });
+  const ask=(t,chips,o)=>new Promise(res=>agentSay(t,Object.assign({chips,onChip:c=>{userSay(c);res(c);}},o||{as:'staffing'})));
+  const kitOut={kind:'Purchase',title:'Your agent kit',sub:'Tier · team · kits · capacity',kit:true,auto:true};
+  let c=await ask('<p>I am <b>Staffing</b>. I read your assessment: 48 at 0.38, Prototype stage, and a capability need in <b>legal and structure</b> and <b>founder distribution</b>. Here is what I recommend, and you choose.</p><p><b>Tier: Growth.</b> The base team: all nine seniors, so Deal Flow and Deal Terms are there for the raise.</p><p><b>Kits:</b> <b>Egyptian company law</b> for Build and <b>MENA investor norms</b> for Deal Terms, both context kits, plus <b>Cap table waterfall modelling</b>, a capability kit, while the Levant terms are open.</p><p>Capacity is not a kit. It comes with the subscription and you can always see what your team used it for.</p>',['What is a kit, exactly?','Why Growth and not Scale?','Can I pay to make it cheaper?','I am ready to check out'],{as:'staffing',fast:1,out:kitOut});
+  const A={
+   'What is a kit, exactly?':'<p>A senior arrives with a standard remit and a standard framework: competent, and generic. A kit makes that senior better at <b>this venture’s</b> job.</p><p><b>Type A, capability</b>: the senior can do something it could not, like waterfall modelling or drafting a counter. <b>Type B, context</b>: the senior knows something it did not, like Egyptian company law or MENA term structures. There is no Type C: doing more of the same is capacity, and capacity is the subscription.</p>',
+   'Why Growth and not Scale?':'<p><b>Scale</b> assumes revenue to instrument and holders to report to. You have neither yet, and most of it would sit unused. <b>Foundation</b> stops before Deal Flow and Deal Terms, and you are about to raise. Growth covers the gap between where you are and a defensible raise.</p>',
+   'Can I pay to make it cheaper?':'<p>No, and on purpose. Model routing, caching and context trimming are on by default for everyone; selling them back would mean charging you to stop us being wasteful.</p><p>What you can buy is <b>Depth control</b>: not cheaper, but your call on when a piece of work is worth being expensive. And if you need more output, that is more team, through the tier.</p>',
+   'What about the investment committee rehearsal?':'<p>It puts you in front of the same panel investors use: several reviewer roles scoring the opportunity and the fit, with reasons and recorded dissent, all labelled simulated. Aether dispatches it, so it is independent. It is a specialist group, not a senior, so it does not change your team. Worth it before Levant decides.</p>'};
+  for(let i=0;i<5&&c!=='I am ready to check out';i++){const rest=Object.keys(A).filter(k=>k!==c);c=await ask(A[c],rest.slice(0,3).concat(['I am ready to check out']));}
+  await agentSay('<p>Check the plan on the right and continue to checkout. Staffing below the recommendation is fine: I say it once, and the gap stays visible in your capacity view. I never complete a payment for you, and the subscription attaches to Sanad, not to you.</p>',{as:'staffing',fast:1});
+  if(CH)outOpen(kitOut);
  }
 };
-
 /* ---------- venture context ---------- */
 const SCOL={done:'#C6FF34',active:'#E4FFA6',blocked:'#FF3B5C',flag:'#FFB020'};
 const SLAB={done:'Complete',active:'In progress',blocked:'Blocked',flag:'Needs attention'};
@@ -1548,7 +1819,7 @@ function openInvestor(id){
  const i=INVESTORS.find(x=>x.id===id);if(!i)return;const p=PH(i.ph),tab=i._tab||'deal',acc=invAccess(i);
  const d=$('#drawer');d.style.setProperty('--lc',p.c);
  d.innerHTML='<div class="dh"><span class="orb lg">'+initials(i.n)+'</span><div style="min-width:0;flex:1"><h2 style="font-size:18px">'+i.n+'</h2><div class="sub" style="font-size:12.5px;color:var(--graph)">'+i.f+' · '+i.ty+'</div></div><button class="xbtn" onclick="closeDrawer()" aria-label="Close">'+I.x+'</button></div>'+
-  '<div class="drtabs">'+[['deal','Deal'],['access','Permission'+(acc.active?'<span class="lv"></span>':'')],['news','Updates']].map(t=>'<button class="'+(tab===t[0]?'on':'')+'" data-t="'+t[0]+'">'+t[1]+'</button>').join('')+'</div>'+
+  '<div class="drtabs">'+[['deal','Deal'],['access','Permission'+(acc.active?'<span class="lv"></span>':'')],['news','Newsletter']].map(t=>'<button class="'+(tab===t[0]?'on':'')+'" data-t="'+t[0]+'">'+t[1]+'</button>').join('')+'</div>'+
   '<div class="db" id="drB">'+(tab==='access'?accessPane(i):tab==='news'?nlBody(i):dealPane(i))+'</div>';
  d.classList.add('on');
  $$('.drtabs button',d).forEach(b=>b.onclick=()=>{i._tab=b.dataset.t;openInvestor(id);});
@@ -1592,8 +1863,8 @@ function wireDrawer(i){const d=$('#drawer');
  $$('.nlh',d).forEach(h=>h.onclick=()=>h.parentNode.classList.toggle('open'));
  $$('[data-cad]',d).forEach(b=>b.onclick=()=>{nlOf(i).cad=b.dataset.cad;openInvestor(i.id);});
  $$('[data-scope]',d).forEach(b=>b.onclick=()=>{nlOf(i).scope=b.dataset.scope;openInvestor(i.id);});
- const nlo=$('#nlOn',d);if(nlo)nlo.onclick=()=>{const n=nlOf(i);n.on=!n.on;n.next=n.on?'1 Oct':'—';openInvestor(i.id);toast(n.on?'Updates on for '+i.n:'Updates paused for '+i.n);};
- const nls=$('#nlSend',d);if(nls)nls.onclick=()=>{const n=nlOf(i);toast(n.on?'Queued for '+i.n+' · sends '+n.next+' once you approve':'Turn updates on for '+i.n+' first');};
+ const nlo=$('#nlOn',d);if(nlo)nlo.onclick=()=>{const n=nlOf(i);n.on=!n.on;n.next=n.on?'1 Oct':'—';openInvestor(i.id);toast(n.on?'Newsletter on for '+i.n:'Newsletter paused for '+i.n);};
+ const nls=$('#nlSend',d);if(nls)nls.onclick=()=>{const n=nlOf(i);toast(n.on?'Queued for '+i.n+' · sends '+n.next+' once you approve':'Turn the newsletter on for '+i.n+' first');};
 }
 function commitMove(i){const pd=i._pending,from=PH(i.ph).n;
  if(pd.t==='pass'||pd.t==='withdraw'){i.at=from;i.rs=pd.r;}
@@ -1656,7 +1927,7 @@ function nlOf(i){if(!NLBY[i.id]){const b=JSON.parse(JSON.stringify(NLBASE));b.on
 function nlBody(i){const N=nlOf(i),p=PH(i.ph),lows=N.scope==='light'?N.lows.slice(0,2):N.lows;
  const kpis=N.kpi.map(k=>'<div class="kpirow"><span>'+k[0]+'</span><b class="mono">'+k[1]+'</b><em class="'+k[3]+'">'+k[2]+'</em></div>').join('');
  const sec=(n,t,sub,body,state)=>'<div class="nlsec"><button class="nlh"><span class="no">'+n+'</span><span class="nt">'+t+'<small>'+sub+'</small></span><span class="ns">'+state+'</span></button><div class="nlb">'+body+'</div></div>';
- return '<button class="tog wide" id="nlOn"><div><div class="t">Send '+i.n+' a regular update</div><div class="d">'+(N.on?'On · next goes out '+N.next+', after you approve it':'Off · '+i.n+' receives nothing')+'</div></div><span class="sw'+(N.on?' on':'')+'"></span></button>'+
+ return '<button class="tog wide" id="nlOn"><div><div class="t">Send '+i.n+' the newsletter</div><div class="d">'+(N.on?'On · next goes out '+N.next+', after you approve it':'Off · '+i.n+' receives nothing')+'</div></div><span class="sw'+(N.on?' on':'')+'"></span></button>'+
   '<div class="dkv"><div><span>State</span><b style="color:'+p.c+'">'+p.n+'</b></div><div><span>Sent to them</span><b>'+N.sent+' editions</b></div><div><span>Their open rate</span><b>'+N.open+'</b></div></div>'+
   '<div class="lbl" style="margin:14px 0 6px">Cadence</div><div class="segb">'+['Monthly','Quarterly','Ad hoc'].map(c=>'<button class="'+(N.cad===c?'on':'')+'" data-cad="'+c+'">'+c+'</button>').join('')+'</div>'+
   '<div class="lbl" style="margin:14px 0 6px">How much to share with '+i.n+'</div><div class="segb">'+[['full','Full update'],['light','Headline only']].map(s=>'<button class="'+(N.scope===s[0]?'on':'')+'" data-scope="'+s[0]+'">'+s[1]+'</button>').join('')+'</div>'+
@@ -1796,7 +2067,7 @@ function openProfile(){
   '</div></div><div style="font-size:11.5px;color:var(--graph);text-align:center">Maintained by Identity · tap the card to see who can see it</div>'+
   '<div class="cap"><div style="display:flex;justify-content:space-between;align-items:center"><div><div class="lbl">Plan · managed by Staffing</div><div style="font:500 20px var(--f-disp);margin-top:4px">Growth <span style="font-size:13px;color:var(--graph);font-family:var(--f-body)">EGP 6,900 / month</span></div></div><button class="btn pri" onclick="openChat(\'staffing\',null,\'plan\')">Change plan</button></div>'+
   '<div class="bar"><i style="width:'+used+'%"></i></div><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--graph)"><span class="mono">'+(TOKENS.used/1000)+'K of '+(TOKENS.limit/1e6)+'M capacity</span><span>Renews '+TOKENS.renews+'</span></div>'+
-  '<div style="margin-top:12px;font-size:12.5px;color:var(--dim)">Kits recommended: <b style="color:var(--pale)">Egyptian legal</b>, Org &amp; hiring</div></div></div>'+
+  '<div style="margin-top:12px;font-size:12.5px;color:var(--dim)">Kits recommended: <b style="color:var(--pale)">Egyptian company law</b>, MENA investor norms, Cap table waterfall modelling</div></div></div>'+
   '<div style="display:grid;gap:16px"><div class="box"><h4>Team &amp; access</h4><div class="team">'+[['NH','Nour Halim','Founder · admin','up','Verified'],['KA','Karim Adly','Founder · admin','up','Verified'],['YF','Yasmine Fouad','Founder · 15%','hold','Proxy record']].map(m=>'<div class="mem"><span class="ph">'+m[0]+'</span><div><div style="font-weight:500;font-size:13.5px">'+m[1]+'</div><div style="font-size:12px;color:var(--graph)">'+m[2]+'</div></div><span class="r pill '+m[3]+'"><span class="d"></span>'+m[4]+'</span></div>').join('')+
   '</div><div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="mini" onclick="openChat(\'identity\',\'Collaborator and access management\')">Invite a collaborator</button><button class="mini ghost" onclick="openChat(\'identity\',\'Verification orchestration\')">Verify Yasmine</button></div></div>'+
   '<div class="box"><h4>Permissions</h4>'+[['Improvement permission','Lets QuidQuo use anonymised data to improve its models. Off by default. Refusing costs you nothing.',0],['Interrupt me on thresholds','Aether interrupts only when an escalation threshold is met.',1],['Weekly briefing','A short Monday summary from Aether.',1]].map((t,i)=>'<div class="tog"><div><div class="t">'+t[0]+'</div><div class="d">'+t[1]+'</div></div><button class="sw'+(t[2]?' on':'')+'" role="switch" aria-checked="'+(t[2]?'true':'false')+'" aria-label="'+t[0]+'"></button></div>').join('')+'</div>'+
@@ -1812,38 +2083,47 @@ function openProfile(){
 /* ---------- agent kit (Staffing: tier, roster, kits, capacity) ---------- */
 const KITST={tier:'Growth',kits:{},staffed:Object.fromEntries(ORDER.map(k=>[k,true]))};
 const TIER_SENIORS={Foundation:['identity','assessment','staffing','build'],Growth:ORDER.slice(),Scale:ORDER.slice()};
-const RECO={tier:'Growth',kits:['Egyptian legal','Org & hiring']};
+const RECO={tier:'Growth',kits:['Egyptian company law','MENA investor norms','Cap table waterfall modelling']};
 const CAP_USE=[['build',38],['dealterms',14],['dealflow',12],['assessment',9],['market',8],['presence',6],['identity',5],['staffing',3],['investorrel',2],['aether',3]];
 function openKit(){
  const body='<div class="vc-hero"><div><div class="lbl">Purchase · run by Staffing</div><h1>Your agent kit</h1><p>Staffing recommends from what the assessment found. You choose: more, less or something different. A tier is what you subscribe to, a kit equips a senior for a job, and capacity is metered separately.</p></div><button class="btn" onclick="openChat(\'staffing\',null,\'plan\')">'+I.chat+' Ask Staffing</button></div>'+
-  '<div class="kit-grid"><div class="kit-main" id="kitMain"></div><aside class="kit-sum" id="kitSum"></aside></div>';
+  '<div id="kitHost"></div>';
  const el=ovShell({title:'Agent kit',sub:'Tier, team, kits and capacity for Sanad',body});
+ kitMount($('#kitHost',el),{});
+}
+function kitMount(el,opt){opt=opt||{};
+ el.innerHTML='<div class="kit-grid'+(opt.compact?' compact':'')+'"><div class="kit-main" id="kitMain"></div><aside class="kit-sum" id="kitSum"></aside></div>';
  const draw=()=>{
   const inTier=TIER_SENIORS[KITST.tier];
   $('#kitMain',el).innerHTML=
    '<section class="kit-sec"><div class="ks-h"><h3>Tier</h3><span class="lbl">What you subscribe to</span></div><div class="tiers kt">'+PLANS.map(p=>'<button class="tier'+(p.n===KITST.tier?' sel':'')+(p.n===RECO.tier?' rec':'')+'" data-t="'+p.n+'"><h4>'+p.n+'</h4><div class="p">'+p.p+' <small>/ month</small></div><div style="font-size:12px;color:var(--graph)">'+p.d+'</div><ul>'+p.f.map(x=>'<li>'+x+'</li>').join('')+'</ul></button>').join('')+'</div></section>'+
    '<section class="kit-sec"><div class="ks-h"><h3>Your team</h3><span class="lbl">'+inTier.filter(k=>KITST.staffed[k]).length+' seniors staffed · Aether always included</span></div><div class="roster">'+
     ['aether'].concat(ORDER).map(k=>{const a=AG[k],avail=k==='aether'||inTier.includes(k),on=k==='aether'||(avail&&KITST.staffed[k]);
-     return '<div class="rs'+(on?' on':'')+(avail?'':' off')+'"><span class="rs-av"><img src="'+img(k)+'" alt=""></span><div style="min-width:0;flex:1"><b>'+a.n+'</b><span>'+a.role+(k==='aether'?' · always on':avail?'':' · not in '+KITST.tier)+'</span></div>'+(k==='aether'?'<span class="pill lime">Included</span>':avail?'<button class="sw'+(on?' on':'')+'" role="switch" aria-checked="'+on+'" aria-label="Staff '+a.n+'" data-k="'+k+'"></button>':'<button class="mini ghost" data-up="'+k+'">Needs Growth</button>')+'</div>';}).join('')+
+     return '<div class="rs'+(on?' on':'')+(avail?'':' off')+'"><span class="rs-av"><img src="'+img(k)+'" alt=""></span><div style="min-width:0;flex:1"><b>'+a.n+'</b><span>'+a.role+(k==='aether'?' · always on':avail?'':' · not in '+KITST.tier)+'</span>'+(KITS.filter(x=>x.to===k&&KITST.kits[x.n]).map(x=>'<em class="eq">'+x.i+' · '+x.n+'</em>').join(''))+'</div>'+(k==='aether'?'<span class="pill lime">Included</span>':avail?'<button class="sw'+(on?' on':'')+'" role="switch" aria-checked="'+on+'" aria-label="Staff '+a.n+'" data-k="'+k+'"></button>':'<button class="mini ghost" data-up="'+k+'">Needs Growth</button>')+'</div>';}).join('')+
    '</div><p class="kit-note">Adding people is free. Co-founders, advisers and a finance lead join through membership, managed by Identity. <button class="lnk" onclick="openChat(\'identity\',\'Collaborator and access management\')">Invite a person</button></p></section>'+
-   '<section class="kit-sec"><div class="ks-h"><h3>Kits</h3><span class="lbl">Equip a senior for this venture’s job</span></div><div class="kitlist">'+KITS.map(x=>{const on=!!KITST.kits[x.n],rec=RECO.kits.includes(x.n);return '<div class="kc'+(on?' on':'')+'"><span class="kc-ic">'+x.i+'</span><div style="min-width:0;flex:1"><div class="kc-t"><b>'+x.n+'</b>'+(rec?'<span class="pill lime" style="font-size:10px;padding:1px 7px">Recommended</span>':'')+'</div><div class="kc-k">'+x.k+'</div><div class="kc-w">'+x.why+'</div></div><div class="kc-r"><div class="mono">'+x.p+'<small>/mo</small></div><button class="mini'+(on?' ghost':'')+'" data-kit="'+x.n+'">'+(on?'Unequip':'Equip')+'</button></div></div>';}).join('')+'</div></section>'+
+   '<section class="kit-sec"><div class="ks-h"><h3>Kits</h3><span class="lbl">Equip a senior for this venture’s job</span></div>'+
+    '<div class="ktypes"><div class="kt2"><b>A · Capability</b><span>The senior can do something it could not.</span></div><div class="kt2"><b>B · Context</b><span>The senior knows something it did not. Built once, sold to every venture in the sector.</span></div><div class="kt2 no"><b>C · Capacity</b><span>Not a kit. More output is the subscription, and capacity is already shown below.</span></div></div>'+
+    ['B','A'].map(t=>'<div class="lbl" style="margin:14px 0 8px">'+(t==='B'?'Context kits · what your seniors know':'Capability kits · what your seniors can do')+'</div><div class="kitlist">'+KITS.filter(x=>x.ty===t).map(x=>{const on=!!KITST.kits[x.n],rec=RECO.kits.includes(x.n);return '<div class="kc'+(on?' on':'')+'"><span class="kc-av"><img src="'+img(x.to)+'" alt=""><i>'+x.i+'</i></span><div style="min-width:0;flex:1"><div class="kc-t"><b>'+x.n+'</b><span class="pill" style="font-size:10px;padding:1px 7px">Type '+x.ty+'</span>'+(rec?'<span class="pill lime" style="font-size:10px;padding:1px 7px">Recommended</span>':'')+'</div><div class="kc-k">'+x.k+(on&&x.to!=='aether'?' · your '+AG[x.to].n+' senior, equipped':'')+'</div><div class="kc-w">'+x.why+'</div></div><div class="kc-r"><div class="mono">'+x.p+'<small>/mo</small></div><button class="mini'+(on?' ghost':'')+'" data-kit="'+x.n+'">'+(on?'Unequip':'Equip')+'</button></div></div>';}).join('')+'</div>').join('')+
+    '<p class="kit-note">Kits sell specialisation, never a better place in matchmaking. Match ranking is never for sale. Whether a kit belongs to the venture or travels with the senior is still an open product decision.</p></section>'+
    '<section class="kit-sec"><div class="ks-h"><h3>Capacity</h3><span class="lbl">Metered separately · never sold as a kit</span></div><div class="cap"><div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font:500 22px var(--f-disp)">'+Math.round(TOKENS.used/TOKENS.limit*100)+'% used</b><span style="font-size:12px;color:var(--graph)">Renews '+TOKENS.renews+'</span></div><div class="bar"><i style="width:'+Math.round(TOKENS.used/TOKENS.limit*100)+'%"></i></div>'+
     '<div class="lbl" style="margin:14px 0 8px">What the team did with it this cycle</div><div class="capuse">'+CAP_USE.map(c=>'<div class="cu"><span class="cu-n"><img src="'+img(c[0])+'" alt="">'+AG[c[0]].n+'</span><span class="cu-b"><i style="width:'+c[1]*2.4+'%"></i></span><span class="mono cu-v">'+c[1]+'%</span></div>').join('')+'</div>'+
-    '<p class="kit-note">If capacity runs out mid-cycle the team slows and says so. It does not disappear.</p></div></section>';
+    '<p class="kit-note">Consumption is visible to everyone, free, as team capacity rather than spend. Model routing, caching and context trimming are on by default for everyone: efficiency is never sold back as a kit. If capacity runs out mid-cycle the team slows and says so; more output means more team, through the subscription.</p></div></section>';
   const tp=PLANS.find(p=>p.n===KITST.tier),num=s=>parseInt(String(s).replace(/\D/g,''))||0;
   const kitsOn=KITS.filter(x=>KITST.kits[x.n]);const total=num(tp.p)+kitsOn.reduce((s,x)=>s+num(x.p),0);
   const missing=RECO.kits.filter(k=>!KITST.kits[k]),below=KITST.tier!==RECO.tier&&KITST.tier==='Foundation';
   const changed=KITST.tier!=='Growth'||kitsOn.length||ORDER.some(k=>!KITST.staffed[k]);
   $('#kitSum',el).innerHTML='<div class="ksum"><div class="lbl">Your plan</div><div class="ksum-row"><span>'+tp.n+' tier</span><span class="mono">'+tp.p+'</span></div>'+kitsOn.map(x=>'<div class="ksum-row"><span>'+x.n+' kit</span><span class="mono">'+x.p+'</span></div>').join('')+
    '<div class="ksum-tot"><span>Per month</span><b class="mono">EGP '+total.toLocaleString()+'</b></div>'+
-   ((missing.length||below)?'<div class="ksum-div"><b>Below the recommendation</b><p>'+(below?'Foundation has no Deal Flow or Deal Terms, and you have a live term sheet. ':'')+(missing.length?missing.join(' and ')+' '+(missing.length>1?'are':'is')+' recommended but not equipped. ':'')+'Staffing says this once, then leaves it visible here.</p></div>':'<div class="ksum-div ok"><b>Matches the recommendation</b><p>Growth with the legal and org kits, from the assessment’s capability need.</p></div>')+
+   ((missing.length||below)?'<div class="ksum-div"><b>Below the recommendation</b><p>'+(below?'Foundation has no Deal Flow or Deal Terms, and you have a live term sheet. ':'')+(missing.length?missing.join(' and ')+' '+(missing.length>1?'are':'is')+' recommended but not equipped. ':'')+'Staffing says this once, then leaves it visible here.</p></div>':'<div class="ksum-div ok"><b>Matches the recommendation</b><p>Growth with the Egyptian law, MENA norms and waterfall kits, from the assessment’s capability need.</p></div>')+
    '<button class="btn pri" style="width:100%;justify-content:center;margin-top:14px" id="kitGo"'+(changed?'':' disabled')+'>'+(changed?'Review and check out':'No changes yet')+'</button>'+
    '<p class="kit-note" style="margin-top:10px">Staffing never completes a payment. Checkout opens for you to confirm, and the subscription attaches to Sanad, not to you.</p></div>';
   $$('.tier',el).forEach(b=>b.onclick=()=>{KITST.tier=b.dataset.t;draw();});
   $$('.sw[data-k]',el).forEach(b=>b.onclick=()=>{KITST.staffed[b.dataset.k]=!KITST.staffed[b.dataset.k];draw();});
   $$('[data-up]',el).forEach(b=>b.onclick=()=>{KITST.tier='Growth';draw();});
   $$('[data-kit]',el).forEach(b=>b.onclick=()=>{KITST.kits[b.dataset.kit]=!KITST.kits[b.dataset.kit];draw();});
-  const g=$('#kitGo',el);if(g)g.onclick=()=>{g.outerHTML='<div class="confirm" style="margin-top:14px"><b>Confirm checkout</b><span>EGP '+total.toLocaleString()+' per month for Sanad.</span><span style="flex:1"></span><button class="mini" onclick="this.parentNode.innerHTML=\'<b style=&quot;color:var(--up)&quot;>Sent to checkout.</b> <span>Prototype: no payment is taken.</span>\'">Go to checkout</button></div>';};
+  const g=$('#kitGo',el);if(g){if(opt.entry){g.disabled=false;g.textContent='Continue to checkout';}
+   g.onclick=()=>{if(opt.entry){g.outerHTML='<div class="pay"><div class="lbl">Checkout · standard payment</div><label>Card number<input value="4242 4242 4242 4242" inputmode="numeric"></label><div class="frm2"><label>Expiry<input value="09 / 28"></label><label>CVC<input value="123"></label></div><button class="btn pri" style="width:100%;justify-content:center" id="paySub">Subscribe · EGP '+total.toLocaleString()+' / month</button><p class="kit-note">Test card. Prototype: no payment is taken. Cancel any time; the venture and its work stay yours.</p></div>';$('#paySub',el).onclick=()=>{KITST.done=1;finishEntry('Subscribed to '+KITST.tier+'. Your team is assembling.');};return;}
+    g.outerHTML='<div class="confirm" style="margin-top:14px"><b>Confirm checkout</b><span>EGP '+total.toLocaleString()+' per month for Sanad.</span><span style="flex:1"></span><button class="mini" onclick="this.parentNode.innerHTML=\'<b style=&quot;color:var(--up)&quot;>Sent to checkout.</b> <span>Prototype: no payment is taken.</span>\'">Go to checkout</button></div>';};}
  };
  draw();
 }
@@ -1885,15 +2165,125 @@ function apToggle(force){const p=$('#actp');const col=force!=null?force:!p.class
 function apInsets(snap){if(!window.C3||!C3.setInsets)return;const p=$('#actp'),mob=innerWidth<=900;
  const l=(!mob&&!p.classList.contains('col'))?p.offsetWidth+28:0;C3.setInsets(l,mob?52:0,snap);$('#navhint').style.setProperty('--nh-off',(l/2)+'px');}
 
+/* ================= ENTRY SEQUENCE · Account → Consent → Onboarding → Venture Assessment → Purchase ================= */
+let LOGO_MARK='';
+const STEPS=['Account','Consent','Onboarding','Venture Assessment','Purchase'];
+const ENTRY_FOOT={2:'Identity records what you tell it, and marks what it could not verify.',3:'Gaps are recorded, never estimated. Missing measures are excluded rather than scored zero.',4:'Staffing recommends; you choose. It never completes a payment for you.'};
+function stepsHTML(cur){return '<div class="steps2">'+STEPS.map((s,i)=>'<span class="stp2 '+(i<cur?'dn':i===cur?'on':'')+'"><b>'+(i<cur?'✓':i+1)+'</b><em>'+s+'</em></span>'+(i<STEPS.length-1?'<i class="stp2-l'+(i<cur?' dn':'')+'"></i>':'')).join('')+'</div>';}
+function openEntry(step){closeAll();setTimeout(()=>{
+ if(step==='auth')return entryAuth();
+ if(step==='consent')return entryConsent();
+ if(step==='onboarding')return openChat('identity',null,'onboarding',{entry:2});
+ if(step==='assessment')return openChat('assessment',null,'assessment',{entry:3});
+ if(step==='kit')return openChat('staffing',null,'plan',{entry:4});},STACK.length?360:0);}
+function finishEntry(msg){try{localStorage.setItem('qq_entered','1')}catch(e){}closeAll();setTimeout(()=>{if(window.C3&&C3.setInsets)apInsets(true);toast(msg||'Welcome to your Command Centre.');},400);}
+function nextEntry(step){if(CH&&CH.entry!=null)openEntry(step);else{const m={assessment:['assessment','assessment'],kit:['staffing','plan']}[step];if(m)openChat(m[0],null,m[1]);}}
+
+function entryAuth(){
+ const ring=['identity','assessment','build','dealflow','market','presence'];
+ const raw='<div class="auth2"><div class="auth-vis"><div class="av-stage"><div class="av-ring r1"></div><div class="av-ring r2"></div><div class="av-ring r3"></div>'+
+  ring.map((k,i)=>'<img class="av-orb" style="--a:'+(i*60)+'deg;--d:'+(i*-.9)+'s" src="'+img(k)+'" alt="">').join('')+
+  '<img class="av-ae" src="'+img('aether')+'" alt="Aether"><div class="av-ped"></div></div>'+
+  '<div class="av-copy"><div class="lbl" style="color:var(--acid)">QuidQuo</div><h2>Your venture, built and raised with a team of agents.</h2><p>Aether coordinates nine seniors that assess, build and raise alongside you. Nothing leaves without your approval.</p></div></div>'+
+  '<div class="auth-form"><div class="af-card"><div class="af-tabs" role="tablist"><button class="on" data-m="up">Create account</button><button data-m="in">Sign in</button></div>'+
+  '<h1 id="afT">Create your account</h1><p class="af-sub" id="afS">Start with your venture. Assessment is free.</p>'+
+  '<button class="sso"><span class="sso-i">G</span>Continue with Google</button><button class="sso"><span class="sso-i">in</span>Continue with LinkedIn</button>'+
+  '<div class="af-or"><span>or</span></div><form id="afF" class="frm"><label>Work email<input type="email" value="nour@sanad.eg" autocomplete="email"></label><label>Password<input type="password" value="prototype" autocomplete="current-password"></label>'+
+  '<button class="btn pri" type="submit" style="width:100%;justify-content:center" id="afGo">Create account</button></form>'+
+  '<p class="af-foot">By continuing you agree to the <a href="#" onclick="return false">Terms</a> and acknowledge the <a href="#" onclick="return false">Privacy notice</a>.</p></div></div></div>';
+ const el=ovShell({entry:0,raw});
+ $$('.af-tabs button',el).forEach(b=>b.onclick=()=>{$$('.af-tabs button',el).forEach(x=>x.classList.toggle('on',x===b));const up=b.dataset.m==='up';$('#afT',el).textContent=up?'Create your account':'Welcome back';$('#afS',el).textContent=up?'Start with your venture. Assessment is free.':'Sign in to your Command Centre.';$('#afGo',el).textContent=up?'Create account':'Sign in';});
+ $$('.sso',el).forEach(b=>b.onclick=()=>openEntry('consent'));
+ $('#afF',el).onsubmit=e=>{e.preventDefault();if($('.af-tabs .on',el).dataset.m==='in')finishEntry('Signed in.');else openEntry('consent');};
+}
+const CONSENT=[
+ {req:1,t:'Your founder record',d:'Your background, experience and what you can reach. Identity captures it once; every later assessment reads it. Without it there is no venture profile.'},
+ {req:1,t:'Your venture data',d:'Everything the agents draft and you approve: market counts, financials, product design. It belongs to the venture, and it stays yours if you leave.'},
+ {req:1,t:'Processing by AI models',d:'Venture data is processed by the model provider to run the agents, under a data processing agreement, and it is not used to train any model. Some processing happens outside Egypt under standard contractual clauses.'},
+ {t:'Recompute figures from public sources',d:'When you give a market size, Assessment counts it again from registers and public filings. Decline and your figures stay as entered, graded claimed rather than verified. That lowers confidence, not your score.'},
+ {t:'Third-party contact data',d:'Names and work details of investors, suppliers or competitors you mention. Held under legitimate interest, minimised to what the business relationship needs.'},
+ {t:'Improvement permission',d:'Anonymised patterns across ventures help sharpen the frameworks and benchmarks. Never your figures, never your identity. Off unless you turn it on, and refusing costs you nothing.'},
+ {t:'Product email',d:'What changed, what we learned, what is coming. Not marketing. One click to stop.'}];
+function entryConsent(){
+ const row=(c,i)=>'<button class="cns-r'+(c.req?' req on':'')+'" data-i="'+i+'"'+(c.req?' aria-disabled="true"':'')+'><span class="cns-bx">✓</span><span class="cns-tx"><b>'+c.t+(c.req?'<em>Required</em>':'')+'</b><small>'+c.d+'</small></span>'+(c.req?'':'<span class="sw"></span>')+'</button>';
+ const raw='<div class="ov-b"><div class="cns2"><div class="lbl" style="color:var(--acid)">Before we begin</div><h1>What QuidQuo holds, and why</h1><p class="cns-lead">Your investment case is built from what you tell your team and what it can verify, so QuidQuo holds real information about you and your venture.</p>'+
+  '<div class="cns-law"><span>PDPL</span><p>Egypt’s Personal Data Protection Law requires us to tell you what we hold, why, and on what basis, and to let you decline anything that is not strictly necessary. Nothing below is bundled.</p></div>'+
+  '<div class="cns-g"><div class="lbl">Required to deliver the service</div>'+CONSENT.map((c,i)=>c.req?row(c,i):'').join('')+'</div>'+
+  '<div class="cns-g"><div class="lbl">Your choice · decline any of these and nothing else changes</div>'+CONSENT.map((c,i)=>c.req?'':row(c,i)).join('')+'</div>'+
+  '<div class="cns-never"><b>What we will never do without asking you again</b><p>Show your venture to an investor. Every share is a Permission you grant, scoped to named sections, metered and revocable in one click. We do not sell data, we do not run ads, and no agent takes an irreversible action on your behalf.</p></div>'+
+  '<button class="btn pri cns-go" id="cnsGo">Agree and continue</button><p class="cns-foot">Change any of these at any time in Profile, and export or delete everything we hold.</p></div></div>';
+ const el=ovShell({entry:1,raw});
+ $$('.cns-r:not(.req)',el).forEach(b=>b.onclick=()=>{b.classList.toggle('on');$('.sw',b).classList.toggle('on');});
+ $('#cnsGo',el).onclick=()=>openEntry('onboarding');
+}
+
+/* ---------- output panel (right side of every chat) ---------- */
+let OUT=null;
+function outOpen(o){if(!CH)return;OUT=o;const el=CH.el,w=$('.chat-wrap',el);
+ $('#outK',el).textContent=o.kind||'Output';$('#outT',el).textContent=o.title;$('#outS',el).textContent=o.sub||'';
+ const bar=$('#outBar',el);
+ if(o.draft){bar.hidden=false;drawDraftBar(bar,o);}else bar.hidden=true;
+ const b=$('#outB',el);b.classList.toggle('flush',!!(o.vf||o.kit));
+ if(o.vf){b.innerHTML='';vfMount(b,o.vf.stage,o.vf.pane);}
+ else if(o.kit){b.innerHTML='<div id="kitOut"></div>';kitMount($('#kitOut',b),{entry:CH.entry!=null,compact:1});}
+ else b.innerHTML='<div class="outdoc">'+(typeof o.html==='function'?o.html():o.html)+'</div>';
+ w.classList.add('out');b.scrollTop=0;}
+function outRefresh(){if(OUT&&CH&&$('.chat-wrap.out',CH.el)&&!OUT.vf&&!OUT.kit)$('#outB',CH.el).innerHTML='<div class="outdoc">'+(typeof OUT.html==='function'?OUT.html():OUT.html)+'</div>';}
+function outClose(){if(!CH)return;$('.chat-wrap',CH.el).classList.remove('out','max');}
+function drawDraftBar(bar,o){const st=o.state||o.draft;
+ const lab={draft:['Draft','hold','Waiting for your review'],approved:['Approved','up','Committed to the venture record'],changes:['Changes requested','info','The agent is redrafting'],rejected:['Rejected','down','Kept in history, not used']}[st];
+ bar.innerHTML='<span class="db-st '+lab[1]+'"><i></i>'+lab[0]+'</span><span class="db-s">'+lab[2]+'</span><span style="flex:1"></span>'+(st==='draft'||st==='changes'?'<button class="mini" data-d="approved">Approve</button><button class="mini ghost" data-d="changes">Request changes</button><button class="mini ghost danger" data-d="rejected">Reject</button>':'<button class="mini ghost" data-d="changes">Request changes</button>');
+ $$('[data-d]',bar).forEach(b=>b.onclick=()=>{o.state=b.dataset.d;drawDraftBar(bar,o);toast({approved:'Approved and committed to the venture record',changes:'Sent back with your note',rejected:'Rejected. Kept in history.'}[o.state]);});}
+/* venture-record frame inside a container (used by outputs) */
+function vfMount(host,id,pane){const vt=VF_TABS[id]||{tabs:[]};
+ host.innerHTML='<div class="vfo-tabs">'+vt.tabs.map((t,i)=>'<button data-p="'+t[0]+'" class="'+((pane?t[0]===pane:i===0)?'on':'')+'"><span class="mono">'+t[1]+'</span>'+t[2]+'</button>').join('')+'</div><iframe class="vf vfo" title="Output"></iframe>';
+ const fr=$('iframe',host);let loaded=false;const first=pane||(vt.tabs[0]||[])[0];
+ const send=p=>fr.contentWindow&&fr.contentWindow.postMessage({vf:1,stage:id,pane:p},'*');
+ fr.addEventListener('load',()=>{loaded=true;send(first);});fr.srcdoc=VF_DOC;
+ const onMsg=e=>{if(e.source!==fr.contentWindow||!e.data)return;if(e.data.vfh)fr.style.height=(e.data.vfh+20)+'px';if(e.data.vfpane)$$('.vfo-tabs button',host).forEach(b=>b.classList.toggle('on',b.dataset.p===e.data.vfpane));};
+ window.addEventListener('message',onMsg);
+ $$('.vfo-tabs button',host).forEach(b=>b.onclick=()=>{$$('.vfo-tabs button',host).forEach(x=>x.classList.toggle('on',x===b));if(loaded)send(b.dataset.p);host.scrollTop=0;});
+}
+/* what each specialist shows in the output panel when its chat opens */
+const BUILD_STAGE={'Idea':'s3','Validation':'s4','Business model and strategy':'s5','Tactical plan':'s6','Brand':'s8','Product':'s8','Setup':'s6','Investment readiness':'s9'};
+function SPEC_OUT(k,spec){
+ if(k==='build'&&spec&&BUILD_STAGE[spec])return {kind:'Venture record',title:spec,sub:'Build · '+((STAGES.find(s=>s.id===BUILD_STAGE[spec])||{}).n||''),vf:{stage:BUILD_STAGE[spec]},draft:'approved'};
+ if(k==='assessment'&&spec)return {kind:'Venture record',title:'Venture Assessment',sub:'60 / 100 · confidence 0.71',vf:{stage:'s2'}};
+ if(k==='identity'&&spec)return {kind:'Profile',title:'Founder record',sub:'Nour Halim · version 4',html:recordHTML};
+ if(k==='dealflow'&&spec)return {kind:'Pipeline',title:'Deal snapshot',sub:'8 active · 1 stalled',html:OUTS.pipe};
+ if(k==='dealterms'&&spec)return {kind:'Terms',title:'Term sheet review',sub:'Levant · 16 terms · 4 flagged',html:OUTS.terms};
+ return null;}
+const OUTS={
+ terms:()=>'<h3>Levant Growth Partners · term sheet</h3><p class="od-s">EGP 3.2M at EGP 9.0M pre-money · 26.2% post-round. Benchmarked against counsel-cleared templates.</p><div class="od-tw"><table><thead><tr><th>Term</th><th>Offered</th><th>Read</th></tr></thead><tbody>'+
+  [['Option pool','12% pre-money','down','Costs you'],['Liquidation preference','1× non-participating','up','Standard'],['Anti-dilution','Broad-based weighted average','up','Standard'],['Drag-along','Included','hold','Material here'],['Board','2 founder · 1 investor','up','Standard'],['Founder vesting','4 years · 1-year cliff','hold','Ask for credit']].map(r=>'<tr class="'+(r[2]==='down'?'bad':r[2]==='hold'?'warn':'')+'"><td>'+r[0]+'</td><td>'+r[1]+'</td><td><span class="pill '+r[2]+'"><span class="d"></span>'+r[3]+'</span></td></tr>').join('')+'</tbody></table></div>'+
+  '<div class="od-call w"><b>Pushback drafted</b><p>Move the pool post-money, or size it to the hires in your phase 1 plan. Nothing goes to Levant until you approve it.</p></div><div class="od-call"><b>Not legal advice</b><p>This explains what is standard so you can read the document. Counsel in Egypt negotiates it.</p></div>',
+ own:()=>'<h3>Founder ownership after the round</h3><p class="od-s">EGP 3.2M at EGP 9.0M pre-money. Illustrative, from Ownership modelling.</p>'+[['Pool pre-money (as offered)',61.8,'Founders absorb all 12 points'],['Pool post-money',64.9,'Dilution shared with Levant']].map(r=>'<div class="od-bar"><div><span>'+r[0]+'</span><b class="mono">'+r[1]+'%</b></div><i><s style="width:'+r[1]+'%"></s></i><small>'+r[2]+'</small></div>').join('')+'<div class="od-call"><b>About 3 points back</b><p>Moving the pool post-money returns roughly 3 points of ownership to the founders on these numbers.</p></div>',
+ holes:()=>'<h3>Data room · self-diligence</h3><p class="od-s">The analysis an investor would run, against your own data room. 14 documents read.</p>'+[['hi','No signed founders agreement','Every investor who reaches Disclose asks for it. Delta Seed stalled on it.'],['hi','No evidence of current revenue','The two invoices are from 2025, fixed-fee pilots.'],['md','A contradiction in the model','Year 3 revenue is 158% of your SOM. Flagged, not capped.']].map(f=>'<div class="od-row"><span class="sev '+f[0]+'"></span><div><b>'+f[1]+'</b><p>'+f[2]+'</p></div></div>').join('')+'<div class="od-call"><b>Cheapest fix first</b><p>The founders agreement costs a conversation and unblocks two deals.</p></div>',
+ teaser:()=>'<div class="od-doc"><div class="od-dh"><span>Teaser · draft for Amal Ventures</span><span class="mono">1 page</span></div><h3>Sanad</h3><p class="od-s">Cold-chain integrity for pharmaceutical distributors · Cairo</p><h4>The problem</h4><p>Distributors cannot prove a temperature-sensitive delivery stayed in range at every handover. Eleven operators described the same failure.</p><h4>The market</h4><p>34 nameable mid-size distributors and 6 large ones, counted from the licence register. SOM EGP 2.50M.</p><h4>Traction</h4><p>Two paid pilots. A prototype tested with three operators, median completion 74 seconds against a 90-second bar.</p><h4>The ask</h4><p>EGP 3.2M seed. EGP 600K closed.</p></div>',
+ drafts:()=>'<div class="od-doc"><div class="od-dh"><span>Draft 1 · LinkedIn post</span><span class="pill lime" style="font-size:10px;padding:1px 7px">Evidence on record</span></div><p>Last month a supervisor caught a temperature break at a 6am handover, before the load left the depot. That is the whole product: proof at the handover, not a log nobody reads.</p></div><div class="od-doc"><div class="od-dh"><span>Draft 2 · founder note</span></div><p>I spent eleven years inside pharmaceutical distribution. The hardest part was never the trucks. It was proving, afterwards, that the cold chain held.</p></div><div class="od-call"><b>Neither mentions the raise</b><p>Anything that mentions the raise needs separate approval.</p></div>',
+ update:()=>'<div class="od-doc"><div class="od-dh"><span>Holder update · Medhat Family Office</span><span class="mono">September</span></div><h4>Where we are</h4><p>First close complete. Incorporation is under way and inside the 60-day condition.</p><h4>Next milestone</h4><p>Entity registered and IP assigned, then the founders agreement signed.</p><h4>What we need</h4><p>An introduction to a corporate lawyer with data-protection licensing experience.</p></div><p class="od-s">Built only from material already shared with this holder.</p>',
+ pipe:()=>'<h3>Pipeline snapshot</h3><p class="od-s">Capital Formation · Seed round</p>'+PHASES.filter(p=>!p.term).map(p=>{const n=INVESTORS.filter(i=>i.ph===p.id);return '<div class="od-bar"><div><span>'+p.n+'</span><b class="mono">'+n.length+'</b></div><i><s style="width:'+n.length*20+'%;background:'+p.c+'"></s></i><small>'+n.map(i=>i.n).join(' · ')+'</small></div>';}).join('')
+};
+
+/* ---------- founder record (Identity output) ---------- */
+const SECTIONS=['Connected channels','Profile','Background','Skills','Character and mindset','Network and reach','Venture direction','Team view','Constraint set'];
+const REC={founders:[{n:'Nour Halim',st:'active'},{n:'Karim Adly',st:'direct'},{n:'Yasmine Fouad',st:'proxy'}],s:{1:['v','LinkedIn connected'],2:['v','Ran the cold-chain fleet'],3:['v','11 years in pharmaceutical distribution · 6 verifiable'],4:['u','Fundraising: never raised'],5:['c','Recorded · reading on file'],6:['u','From connected channels'],7:['u','Sold it, doing the next thing'],8:['f','Differs from Karim: exit vs keep building'],9:['u','Karim part-time to month 6']},v:4};
+function recordHTML(){const sm={v:['Verified','up'],u:['Your account','info'],c:['Recorded','lime'],f:['Flagged','hold']};
+ return '<div class="rec-f">'+REC.founders.map(f=>'<span class="pill '+(f.st==='direct'?'up':f.st==='proxy'?'hold':f.st==='invited'?'info':f.st==='active'?'lime':'')+'"><span class="d"></span>'+f.n+' · '+({active:'in progress',direct:'recorded directly',proxy:'by proxy',invited:'invited',pending:'waiting'}[f.st]||f.st)+'</span>').join('')+'</div>'+
+  '<h3 style="margin-top:14px">'+REC.founders[0].n+'</h3><p class="od-s">Founder record'+(REC.v?' · version '+REC.v:'')+' · nine sections</p><div class="rec-s">'+SECTIONS.map((s,i)=>{const r=REC.s[i+1];return '<div class="rs2'+(r?' on':'')+'"><span class="rs-n mono">'+(i+1)+'</span><div style="min-width:0;flex:1"><b>'+s+'</b><small>'+(r?r[1]:'Not captured yet')+'</small></div>'+(r?'<span class="pill '+sm[r[0]][1]+'" style="font-size:10px;padding:1px 7px"><span class="d"></span>'+sm[r[0]][0]+'</span>':'')+'</div>';}).join('')+'</div>'+
+  (REC.s[8]&&REC.s[8][0]==='f'?'<div class="od-call w"><b>A conversation you have not had</b><p>You want an exit and Karim wants to keep building. It will surface in the founders agreement, and again in any term sheet with a drag-along.</p></div>':'')+
+  '<p class="od-s" style="margin-top:12px">Nothing you tell Identity is presented later as verified. Proxy records carry no character reading.</p>';}
+
 /* ---------- boot ---------- */
 function boot(){
- renderTop();renderStats();
+ renderTop();renderStats();LOGO_MARK=$('.logo .mark').innerHTML;
  $('#vbtn').addEventListener('click',toggleVMenu);
  setTimeout(()=>$('#boot').classList.add('off'),900);
  $('#gl').addEventListener('pointerdown',()=>{const h=$('#navhint');h.classList.add('dim');},{once:true});
  $('#actpChev').innerHTML=I.down;$('#i-kit').innerHTML=I.kit;$('#actpTg').onclick=()=>apToggle();
  let col=innerWidth<=900;try{const v=localStorage.getItem('qq_ap_col');if(v!=null&&innerWidth>900)col=v==='1';}catch(e){}
  $('#actp').classList.toggle('col',col);apRender();setTimeout(()=>apInsets(true),0);setInterval(apTick,7000);
+ let seen=false;try{seen=localStorage.getItem('qq_entered')==='1'}catch(e){}if(!seen)openEntry('auth');
  let rw=innerWidth;addEventListener('resize',()=>{if((rw<=900)!==(innerWidth<=900)){$('#actp').classList.toggle('col',innerWidth<=900);}rw=innerWidth;apInsets();});
  if(window.C3&&C3.fail){$('#stage').insertAdjacentHTML('beforeend','<div style="position:absolute;inset:0;display:grid;place-items:center;color:var(--graph)">3D needs WebGL. Your agents are below.</div>');}
 }
