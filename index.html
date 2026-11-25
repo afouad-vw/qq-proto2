@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>QuidQuo Command Center</title>
+<title>QuidQuo</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
@@ -1095,6 +1095,27 @@ html{scroll-behavior:smooth}
 @media (max-width:640px){.so-btn span{display:none}.so-btn{padding:7px 9px}}
 @media (max-width:640px){.pp-kpis.k5>.vcc:nth-child(5){grid-column:1/-1}}
 .cc-tabs,.tabs{scrollbar-width:none}.cc-tabs::-webkit-scrollbar{display:none}
+/* specialties (not clickable) */
+.sa.spc{cursor:default}.sa.spc:hover{transform:none;background:var(--glass)}.sa.spc:hover::after{opacity:0;animation:none}
+.sa.spc p{margin-bottom:0}
+.spc-in{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.spc-in span{font:500 11px var(--f-body);color:var(--lime);border:1px solid rgba(198,255,52,.3);border-radius:99px;padding:3px 9px}
+.ag-mode{margin:12px auto 0;text-align:center;font-size:12.5px;line-height:1.5;color:var(--dim);max-width:380px}.ag-mode b{color:var(--ink,#fff);font-weight:500}
+/* sub-agent picker */
+.pick{position:fixed;inset:0;z-index:400;background:rgba(4,6,3,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .25s}
+.pick.on{opacity:1}
+.pick-c{width:min(520px,100%);max-height:calc(100dvh - 32px);display:flex;flex-direction:column;background:#0D100B;border:1px solid var(--edge);border-radius:20px;box-shadow:0 30px 80px rgba(0,0,0,.6);transform:translateY(12px);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.pick.on .pick-c{transform:none}
+.pick-h{display:flex;gap:12px;align-items:flex-start;padding:18px 18px 12px}
+.pick-h .av{width:44px;height:44px;flex:0 0 44px;border-radius:12px;overflow:hidden;background:rgba(198,255,52,.06)}.pick-h .av img{width:100%;height:100%;object-fit:contain;object-position:top}
+.pick-h div{flex:1;min-width:0}.pick-h h3{font:500 17px var(--f-disp);margin:2px 0 4px}.pick-h p{margin:0;font-size:12.5px;color:var(--dim);line-height:1.5}
+.pick-h .icb{flex:0 0 auto}
+.pick-l{overflow:auto;padding:4px 10px 12px;display:flex;flex-direction:column;gap:6px}
+.pick-l button{display:flex;align-items:center;gap:12px;text-align:left;padding:11px 12px;border-radius:12px;border:1px solid var(--edge);background:var(--glass);color:inherit;transition:.2s}
+.pick-l button:hover{border-color:rgba(198,255,52,.45);background:rgba(28,34,22,.7)}
+.pk-n{font:500 11px var(--f-mono);color:var(--graph);width:20px}.pk-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.pk-t b{font-weight:500;font-size:14px}.pk-t small{font-size:12px;color:var(--dim)}
+.pick-l button svg{width:14px;height:14px;color:var(--lime);flex:0 0 auto}
+@media (max-width:640px){.pick{align-items:flex-end;padding:0}.pick-c{border-radius:20px 20px 0 0;width:100%;max-height:85dvh}}
+.spc-in em{font:500 10px var(--f-mono);font-style:normal;color:var(--graph);letter-spacing:.1em;text-transform:uppercase;align-self:center;margin-right:2px}
 </style>
 
 <div id="boot"><div class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="310.13 0 424.1 429.98"><path fill="#A8E01F" d="M403.97,273.21c0-157.93,72.2-171.56,162.13-171.56,22,0,43.67,1.22,63.66,5.4-18-71.16-83.64-77.69-157.26-98.37-110.31-30.99-151.66,22.86-160.93,132.85-10.24,121.46,35.5,162.73,97.25,175.66-3.16-12.52-4.85-27.03-4.85-43.97Z"/><path fill="#C6FF34" d="M571.86,107.4c-89.93,0-162.12,13.63-162.13,171.56,0,113.31,75.55,118.03,162.13,142.36,110.31,30.99,151.66-22.86,160.93-132.85,13.55-160.8-70.99-181.07-160.93-181.07Z"/></svg><div class="lbl">Assembling your team</div></div></div>
@@ -1168,13 +1189,15 @@ const AG={
   alone:['Request and extract from documents','Score desirability, viability, feasibility and impact','Set confidence and classify development stage','Produce the scored profile, and a gated Finding where evidence clears the gate'],
   esc:['A score you dispute','Two documents that disagree materially','A stage regression that would restaff the team'],
   subs:[['Document extraction','Reads what you upload and pulls the evidence out.'],['Desirability scorer','Do people want this, and can you win them?'],['Viability scorer','Does the money work, and keep working as you grow?'],['Feasibility scorer','Can you build and run this? Team and context sit here.'],['Impact scorer','What does the business do beyond making money?'],['Stage classification','Places the venture on its development stage.'],['Capability derivation','Names the roles and skills the venture is missing.'],['Finding synthesis and gate','Writes the Finding only when the evidence clears the gate.'],['Performance ingestion','Brings live performance data into the standing read.']],
+  chats:[['Initial assessment','Your free Venture Assessment (KYV): four dimensions, the Finding and the capability need.'],['Venture Performance','The live read of your operating data once your systems connect.'],['Venture score','The reassessment at investment readiness, and what moved since the first one.']],
   chips:['Walk me through the 60/100','What would move my score most?','Why are three measures excluded?','Run a reassessment']},
  build:{n:'Build',role:'Builds the venture',cl:'core',st:'active',now:'Tactical plan · business intelligence',
   d:'Works with you through the ten development modules. Your venture profile and data room assemble as you go.',
   owns:'Venture Development. The ten modules, their outputs, and the venture profile and data room they assemble into.',
   alone:['Run any module you open and produce structured output','Flag stale work and mark module dependencies','Run investor-grade analysis on your own data room and report the gaps','Run the market research the case needs'],
   esc:['Invalidating completed work','Anything that changes the stated direction of the venture'],
-  subs:[['Orientation','Sets out what the case needs and where to start.'],['Knowledge curation','Keeps your knowledge base current and notes what each document changed.'],['Idea','Problem, customer and concept, from evidence.'],['Validation','Interviews, market definition and sizing, counted rather than estimated.'],['Business model and strategy','The model on the Magic Triangle and phases with state triggers.'],['Tactical plan','Commercial, operations, org, BI and the financial model.'],['Brand','Logo concepts, palette and the brand manual.'],['Product','Product scope, roadmap and what to build first.'],['Setup','Entity, IP assignment and the founders agreement.'],['Investment readiness','Materials, data room and the gaps an investor would find.']],
+  subs:[['Idea','Market targeting, problem, concept and the questions to test, from evidence.',['Orientation','Knowledge curation']],['Validation','Market assessment: segments, sizing and behaviour, counted rather than estimated.'],['Business model & strategy','The model on the Magic Triangle and phases with state triggers.'],['Tactical plan','Commercial, growth, operations, legal and org plans.'],['Financial plan','Revenue model, costs and runway, built from the tactical plan.'],['Brand','Logo concepts, palette and the brand manual.'],['Product','Product scope, roadmap and what to build first.'],['Setup','Accounting, business intelligence and marketing tools, connected.'],['Investment readiness','Fundraising strategy, materials and the data room gaps an investor would find.']],
+  chats:[['Idea','Market targeting, problem, concept and the questions to test.'],['Validation','Market assessment: segments, sizing and behaviour.'],['Business model & strategy','The business model and the phased strategy.'],['Tactical plan','Commercial, growth, operations, legal and org.'],['Financial plan','Revenue model, costs and runway.'],['Brand','Brand concept, identity and manual.'],['Product','Product scope and roadmap.'],['Setup','Accounting, BI and marketing tools.'],['Investment readiness','Strategy, materials and data room.']],
   chips:['Why is year 3 above my SOM?','Find the holes in my data room','Rework the phase 1 plan','What is stale?']},
  dealflow:{n:'Deal Flow',role:'Runs the raise',cl:'capital',st:'active',now:'11 investors · 1 stalled',
   d:'Holds the raise from the first investor conversation to a closed round. Proposes every move, you confirm it.',
@@ -1457,7 +1480,7 @@ const CCV={
   const staffed=ORDER.filter(k=>KITST.staffed[k]).length,eq=KITS.filter(x=>KITST.kits[x.n]).length,score=Math.round(staffed/9*55+eq/KITS.length*25+20);
   return '<div><div class="cc-strength"><div><div class="lbl">Team strength</div><div class="cs-v">'+score+'<small>/100</small></div><div class="s">'+staffed+' of 9 seniors staffed · '+eq+' kits equipped · '+people.length+' people</div></div><div class="cs-bar"><i style="width:'+score+'%"></i></div><p>Built from who is on the team and how they are equipped. It never scores the raise or a deal.</p></div>'+
    '<div class="lbl" style="margin:18px 0 8px">People · joined through membership</div><div class="cc-people">'+people.map(p=>'<div class="ccp"><span class="ph">'+p[0]+'</span><div style="min-width:0;flex:1"><b>'+p[1]+'</b><small>'+p[2]+'</small></div><span class="pill '+p[4]+'"><span class="d"></span>'+p[3]+'</span></div>').join('')+'<button class="ccp add" onclick="openChat(\'identity\',\'Collaborator and access management\')">'+I.plus+'<b>Invite an adviser or finance lead</b></button></div>'+
-   '<div class="lbl" style="margin:18px 0 8px">Agents · joined through Staffing</div><div class="cc-agents">'+['aether'].concat(ORDER).map(k=>{const a=AG[k],s=ST[a.st],kits=KITS.filter(x=>x.to===k&&KITST.kits[x.n]);return '<button class="cca" onclick="openAgent(\''+k+'\')"><span class="cca-av"><img src="'+img(k)+'" alt=""></span><div style="min-width:0;flex:1"><div class="cca-t"><b>'+a.n+'</b><span class="pill '+s[1]+'" style="font-size:10px;padding:1px 7px"><span class="d"></span>'+s[0]+'</span></div><small>'+a.role+' · '+(k==='aether'?'9 seniors':a.subs.length+' sub-agents')+'</small><div class="cca-now">'+a.now+'</div><div class="cca-m"><span class="mono">'+RUNS[k]+'</span> runs this week'+(kits.length?' · '+kits.map(x=>'<em class="eq">'+x.i+'</em>').join(''):'')+'</div></div></button>';}).join('')+'</div></div>';},
+   '<div class="lbl" style="margin:18px 0 8px">Agents · joined through Staffing</div><div class="cc-agents">'+['aether'].concat(ORDER).map(k=>{const a=AG[k],s=ST[a.st],kits=KITS.filter(x=>x.to===k&&KITST.kits[x.n]);return '<button class="cca" onclick="openAgent(\''+k+'\')"><span class="cca-av"><img src="'+img(k)+'" alt=""></span><div style="min-width:0;flex:1"><div class="cca-t"><b>'+a.n+'</b><span class="pill '+s[1]+'" style="font-size:10px;padding:1px 7px"><span class="d"></span>'+s[0]+'</span></div><small>'+a.role+' · '+(k==='aether'?'9 seniors':a.chats?a.chats.length+' sub-agents':'Direct chat')+'</small><div class="cca-now">'+a.now+'</div><div class="cca-m"><span class="mono">'+RUNS[k]+'</span> runs this week'+(kits.length?' · '+kits.map(x=>'<em class="eq">'+x.i+'</em>').join(''):'')+'</div></div></button>';}).join('')+'</div></div>';},
  perf:()=>'<div><div class="cc-2"><div class="panel"><div class="panel-h"><h3>Venture performance</h3><span class="lbl">Live read · from connectors</span></div><div class="ccperf">'+NLBASE.kpi.map((k,i)=>'<div class="cpk"><div class="lbl">'+k[0]+'</div><div class="v mono">'+k[1]+'</div><div class="d '+k[3]+'">'+k[2]+'</div>'+spark([3,4,4,5,5,6].map((v,j)=>v+(k[3]==='d'?-j*.6:j*.3)+((i*j)%3)*.2))+'</div>').join('')+'</div><p class="kit-note">Assessment’s Performance ingestion reads these through the connected systems. Connect accounting and analytics to fill the rest.</p></div>'+
    '<div class="panel"><div class="panel-h"><h3>Team performance</h3><span class="lbl">This week</span></div>'+Object.entries(RUNS).sort((x,y)=>y[1]-x[1]).map(([k,v])=>'<div class="cu"><span class="cu-n"><img src="'+img(k)+'" alt="">'+AG[k].n+'</span><span class="cu-b"><i style="width:'+v/63*100+'%"></i></span><span class="mono cu-v">'+v+'</span></div>').join('')+
    '<div class="ccm"><div><b class="mono">94%</b><span>outputs approved</span></div><div><b class="mono">3</b><span>redirected mid-run</span></div><div><b class="mono">12</b><span>escalations resolved</span></div><div><b class="mono">6</b><span>handoffs via Aether</span></div></div></div></div>'+
@@ -1494,15 +1517,17 @@ function openAgent(k){
  const subs=k==='aether'?ORDER.map(x=>[AG[x].n,AG[x].d,x]):a.subs;
  const body='<div class="ag-grid"><div class="ag-hero"><div class="ag-stagec"><div class="beam"></div><div class="ring r2"></div><div class="ring"></div><img src="'+img(k)+'" alt="'+a.n+'"></div>'+
   '<div class="ag-name"><div class="role">'+a.role+'</div><h1>'+a.n+'</h1><div class="meta"><span class="pill '+s[1]+'"><span class="d"></span>'+s[0]+'</span><span class="pill">'+a.now+'</span></div></div>'+
-  '<div class="ag-cta"><button class="btn pri" onclick="openChat(\''+k+'\')">'+I.chat+' Talk to '+a.n+'</button>'+(k==='staffing'?'<button class="btn" onclick="openChat(\'staffing\',null,\'plan\')">Review my plan</button>':k==='assessment'?'<button class="btn" onclick="openStage(\'s2\')">See the scorecard</button>':k==='dealflow'?'<button class="btn" onclick="openPipeline()">Open pipeline</button>':k==='identity'?'<button class="btn" onclick="openProfile()">Open profile</button>':k==='build'?'<button class="btn" onclick="openVenture()">Venture context</button>':'')+'</div></div>'+
+  '<div class="ag-cta"><button class="btn pri" onclick="talkTo(\''+k+'\')">'+I.chat+' Talk to '+a.n+'</button>'+(k==='staffing'?'<button class="btn" onclick="openChat(\'staffing\',null,\'plan\')">Review my plan</button>':k==='assessment'?'<button class="btn" onclick="openStage(\'s2\')">See the scorecard</button>':k==='dealflow'?'<button class="btn" onclick="openPipeline()">Open pipeline</button>':k==='identity'?'<button class="btn" onclick="openProfile()">Open profile</button>':k==='build'?'<button class="btn" onclick="openVenture()">Venture context</button>':'')+'</div>'+(k==='aether'?'':'<p class="ag-mode">'+(a.chats?'<b>'+a.chats.length+' sub-agent chats.</b> '+a.n+' works through its sub-agents, each in its own chat. You pick one when you start.':'<b>One chat.</b> You talk to '+a.n+' directly.')+'</p>')+'</div>'+
   '<div><div class="sec"><h3>What '+a.n+' does</h3><p class="intro">'+a.d+'</p>'+
   '<div class="remit"><div class="c own"><h4><i></i>Owns</h4><p>'+a.owns+'</p></div><div class="c"><h4><i></i>Acts on its own</h4><ul>'+a.alone.map(x=>'<li>'+x+'</li>').join('')+'</ul></div><div class="c esc"><h4><i></i>Asks you first</h4><ul>'+a.esc.map(x=>'<li>'+x+'</li>').join('')+'</ul></div></div></div>'+
-  '<div class="sec"><h3>'+(k==='aether'?'Your seniors':'Sub-agents')+' <span class="lbl">'+subs.length+(k==='aether'?' seniors · Aether calls seniors, not specialists':' specialists · pick one to start')+'</span></h3>'+
-  '<div class="subs">'+subs.map((x,i)=>'<button class="sa" data-i="'+i+'">'+(k==='aether'?'<span class="st"><img src="'+img(x[2])+'" style="width:34px;height:34px;object-fit:contain;object-position:top" alt=""></span>':'')+'<div class="k">'+(k==='aether'?CLUSTERS[AG[x[2]].cl]:'SPECIALIST '+String(i+1).padStart(2,'0'))+'</div><h4>'+x[0]+'</h4><p>'+x[1]+'</p><div class="go">'+(k==='aether'?'Open '+x[0]:'Start a chat')+' '+I.arr+'</div></button>').join('')+'</div></div>'+
+  (k==='aether'?'<div class="sec"><h3>Your seniors <span class="lbl">'+subs.length+' seniors · Aether calls seniors, not specialists</span></h3>'+
+  '<div class="subs">'+subs.map((x,i)=>'<button class="sa" data-i="'+i+'"><span class="st"><img src="'+img(x[2])+'" style="width:34px;height:34px;object-fit:contain;object-position:top" alt=""></span><div class="k">'+CLUSTERS[AG[x[2]].cl]+'</div><h4>'+x[0]+'</h4><p>'+x[1]+'</p><div class="go">Open '+x[0]+' '+I.arr+'</div></button>').join('')+'</div></div>'
+  :'<div class="sec"><h3>Specialties <span class="lbl">'+subs.length+' · what '+a.n+' brings to the work</span></h3>'+
+  '<div class="subs">'+subs.map((x,i)=>'<div class="sa spc"><div class="k">'+String(i+1).padStart(2,'0')+'</div><h4>'+x[0]+'</h4><p>'+x[1]+'</p>'+(x[2]?'<div class="spc-in"><em>Includes</em>'+x[2].map(t=>'<span>'+t+'</span>').join('')+'</div>':'')+'</div>').join('')+'</div></div>')+
   (k==='dealflow'||k==='dealterms'||k==='investorrel'?'<div class="sec"><h3>Handoffs <span class="lbl">run by Aether</span></h3><div class="handoff">'+['dealflow','dealterms','investorrel'].map(x=>'<span class="hn"><img src="'+img(x)+'" alt="">'+AG[x].n+'</span>').join('<span class="arr">→</span>')+'<span class="arr">→ back to Deal Flow for the next round</span></div></div>':'')+
   '</div></div>';
  const el=ovShell({title:a.n,sub:a.role,body,head:'<div style="display:flex;align-items:center;gap:10px"><span class="lbl">Agent</span></div>'});
- $$('.sa',el).forEach(b=>b.onclick=()=>{const x=subs[+b.dataset.i];if(k==='aether')openAgent(x[2]);else openChat(k,x[0]);});
+ if(k==='aether')$$('.sa',el).forEach(b=>b.onclick=()=>openAgent(subs[+b.dataset.i][2]));
 }
 
 /* ---------- chat ---------- */
@@ -1541,10 +1566,19 @@ const GREET={
  presence:'Two drafts are waiting. Nothing leaves without your approval.'
 };
 let CH=null;
+function talkTo(k){const a=AG[k];if(!a.chats)return openChat(k);
+ closePick();const m=document.createElement('div');m.className='pick';m.id='pick';
+ m.innerHTML='<div class="pick-c" role="dialog" aria-label="Choose a sub-agent"><div class="pick-h"><span class="av"><img src="'+img(k)+'" alt=""></span><div><h3>Talk to '+a.n+'</h3><p>'+a.n+' has no chat of its own. It works through '+a.chats.length+' sub-agents, each with its own chat and history.</p></div><button class="icb" onclick="closePick()" aria-label="Close">'+I.x+'</button></div><div class="pick-l">'+a.chats.map((x,i)=>'<button data-i="'+i+'"><span class="pk-n">'+String(i+1).padStart(2,'0')+'</span><span class="pk-t"><b>'+x[0]+'</b><small>'+x[1]+'</small></span>'+I.arr+'</button>').join('')+'</div></div>';
+ document.body.appendChild(m);requestAnimationFrame(()=>m.classList.add('on'));
+ m.onclick=e=>{if(e.target===m)closePick();};
+ $$('.pick-l button',m).forEach(b=>b.onclick=()=>{closePick();openChat(k,a.chats[+b.dataset.i][0]);});}
+function closePick(){const m=$('#pick');if(m){m.classList.remove('on');setTimeout(()=>m.remove(),250);}}
+function subDesc(a,spec){return ((a.chats||[]).find(x=>x[0]===spec)||(a.subs||[]).find(x=>x[0]===spec)||['',''])[1];}
 function openChat(k,spec,flow,opt){
  opt=opt||{};const a=AG[k];
+ if(a.chats&&!spec){if(!flow)return talkTo(k);spec=a.chats[0][0];}
  const head='<div style="display:flex;align-items:center;gap:12px;min-width:0"><span class="av" style="width:40px;height:40px;flex-basis:40px"><img src="'+img(k)+'" alt=""></span><div style="min-width:0"><h2 style="font-size:17px">'+a.n+(spec?' <span style="color:var(--graph);font-weight:400">› '+spec+'</span>':'')+'</h2><div class="sub">'+(flow==='onboarding'?'Onboarding':flow==='assessment'?'Venture assessment':flow==='plan'?'Team and plan':a.role)+'</div></div></div>';
- const raw='<div class="chat"><div class="chat-scroll"><div class="chat-col" id="ccol"><div class="chat-intro"><div class="portrait"><img src="'+img(k)+'" alt=""></div><h2>'+(spec||a.n)+'</h2><p>'+(spec?(a.subs.find(x=>x[0]===spec)||['',''])[1]+' Working inside '+a.n+'.':a.d)+'</p></div></div></div>'+
+ const raw='<div class="chat"><div class="chat-scroll"><div class="chat-col" id="ccol"><div class="chat-intro"><div class="portrait"><img src="'+img(k)+'" alt=""></div><h2>'+(spec||a.n)+'</h2><p>'+(spec?subDesc(a,spec)+' A sub-agent of '+a.n+'.'+((a.subs.find(x=>x[0]===spec)||[])[2]?' Specialties: '+a.subs.find(x=>x[0]===spec)[2].join(', ')+'.':''):a.d)+'</p></div></div></div>'+
   '<div class="composer-row"><div class="composer-wrap"><div class="thinker" id="thk"><span class="bubble"><i></i><i></i><i></i></span><img src="'+img(k)+'" alt=""></div>'+
   '<div class="composer" id="cmp"><div class="composer-in"><button class="cbtn" aria-label="Attach" onclick="toast(\'Attach a file: it goes to the knowledge base first.\')">'+I.clip+'</button><textarea id="cin" rows="1" placeholder="Message '+a.n+'…"></textarea><button class="cbtn send" id="csend" aria-label="Send">'+I.send+'</button></div></div></div>'+
   '<div class="c-foot">'+(opt.entry!=null?ENTRY_FOOT[opt.entry]:a.n+' asks before anything leaves the platform. Replies here are a scripted demo.')+'</div></div></div>';
@@ -1558,7 +1592,7 @@ function openChat(k,spec,flow,opt){
  $('#csend',el).onclick=send;
  function send(){const v=ta.value.trim();if(!v||CH.busy)return;ta.value='';ta.style.height='auto';userSay(v);respond(v);}
  if(flow)FLOWS[flow](0);
- else{const sp=spec?'<p>You opened <b>'+spec+'</b>. '+(a.subs.find(x=>x[0]===spec)||['',''])[1]+'</p><p>What would you like to work on?</p>':'<p>'+GREET[k]+'</p>';
+ else{const sp=spec?'<p>You opened <b>'+spec+'</b>. '+subDesc(a,spec)+'</p><p>What would you like to work on?</p>':'<p>'+GREET[k]+'</p>';
   agentSay(sp,{chips:a.chips,fast:1,out:SPEC_OUT(k,spec)});}
 }
 function msgEl(me,k){const d=document.createElement('div');d.className='msg'+(me?' me':'');
@@ -1727,9 +1761,9 @@ function openVenture(){
 let VF_FRAME=null;
 function openStage(id){
  const s=STAGES.find(x=>x.id===id),a=AG[s.ag],c=SCOL[s.status],vt=VF_TABS[id]||{tabs:[],sub:''};
- const specMap={s3:'Idea',s4:'Validation',s5:'Business model and strategy',s6:'Tactical plan',s7:'Tactical plan',s8:'Brand',s9:'Investment readiness'};
+ const specMap={s3:'Idea',s4:'Validation',s5:'Business model & strategy',s6:'Tactical plan',s7:'Financial plan',s8:'Brand',s9:'Investment readiness'};
  const spec=specMap[id];
- const go=id==='s1'?"openChat('identity',null,'onboarding')":id==='s2'||id==='s10'?"openChat('assessment')":"openChat('build','"+spec+"')";
+ const go=id==='s1'?"openChat('identity',null,'onboarding')":id==='s2'?"openChat('assessment','Initial assessment')":id==='s10'?"openChat('assessment','Venture score')":"openChat('build','"+spec+"')";
  const body='<div class="sd-head"><span class="por"><img src="'+img(s.ag)+'" alt=""></span><div style="min-width:0;flex:1"><h1>'+s.n+'</h1><div class="sd-sub">'+vt.sub+'</div><div class="meta"><span class="pill" style="color:'+c+'"><span class="d"></span>'+SLAB[s.status]+'</span><span class="pill">Owned by <b style="font-family:var(--f-body);font-weight:500;color:var(--bone)">'+a.n+'</b></span>'+(vt.tabs.length?'<span class="pill">'+vt.tabs.length+' sections</span>':'')+'</div></div>'+
   '<button class="btn pri" onclick="'+go+'">'+I.chat+' Ask '+a.n+'</button></div>'+
   '<div class="tabs" role="tablist"><button role="tab" class="on" data-t="sum">Summary</button>'+vt.tabs.map(t=>'<button role="tab" data-t="'+t[0]+'"><span class="mono" style="opacity:.55;margin-right:6px;font-size:11px">'+t[1]+'</span>'+t[2]+'</button>').join('')+'</div>'+
@@ -2264,7 +2298,7 @@ function vfMount(host,id,pane){const vt=VF_TABS[id]||{tabs:[]};
  $$('.vfo-tabs button',host).forEach(b=>b.onclick=()=>{$$('.vfo-tabs button',host).forEach(x=>x.classList.toggle('on',x===b));if(loaded)send(b.dataset.p);host.scrollTop=0;});
 }
 /* what each specialist shows in the output panel when its chat opens */
-const BUILD_STAGE={'Idea':'s3','Validation':'s4','Business model and strategy':'s5','Tactical plan':'s6','Brand':'s8','Product':'s8','Setup':'s6','Investment readiness':'s9'};
+const BUILD_STAGE={'Idea':'s3','Validation':'s4','Business model & strategy':'s5','Tactical plan':'s6','Financial plan':'s7','Brand':'s8','Product':'s8','Setup':'s6','Investment readiness':'s9'};
 function SPEC_OUT(k,spec){
  if(k==='build'&&spec&&BUILD_STAGE[spec])return {kind:'Venture record',title:spec,sub:'Build · '+((STAGES.find(s=>s.id===BUILD_STAGE[spec])||{}).n||''),vf:{stage:BUILD_STAGE[spec]},draft:'approved'};
  if(k==='assessment'&&spec)return {kind:'Venture record',title:'Venture Assessment',sub:'60 / 100 · confidence 0.71',vf:{stage:'s2'}};
@@ -2530,7 +2564,7 @@ const C3=window.C3={};
  const card=document.getElementById('hcard');
  function showCard(k,e){if(S.cardKey!==k){const a=AG[k],s=ST[a.st];
    card.innerHTML='<div class="top"><div><h3>'+a.n+'</h3><div class="role">'+a.role+'</div></div><span class="pill '+s[1]+'"><span class="d"></span>'+s[0]+'</span></div><p>'+a.d+'</p><div class="meta">'+
-   (k==='aether'?'<span class="pill">Calls <b>9</b> seniors</span><span class="pill">No specialists</span>':'<span class="pill"><b>'+a.subs.length+'</b> sub-agents</span><span class="pill">'+CLUSTERS[a.cl].charAt(0)+CLUSTERS[a.cl].slice(1).toLowerCase()+'</span>')+'</div><div class="go">'+a.now+' · click to open</div>';S.cardKey=k;}
+   (k==='aether'?'<span class="pill">Calls <b>9</b> seniors</span><span class="pill">No specialists</span>':(a.chats?'<span class="pill"><b>'+a.chats.length+'</b> sub-agent chats</span>':'<span class="pill">Direct chat</span>')+'<span class="pill">'+CLUSTERS[a.cl].charAt(0)+CLUSTERS[a.cl].slice(1).toLowerCase()+'</span>')+'</div><div class="go">'+a.now+' · click to open</div>';S.cardKey=k;}
   S.cardPos=[e.clientX,e.clientY];placeCard();card.classList.add('on');}
  function placeCard(){const r=stage.getBoundingClientRect();let x=S.cardPos[0]-r.left+24,y=S.cardPos[1]-r.top-40;const cw=card.offsetWidth,ch=card.offsetHeight;
   if(x+cw>r.width-12)x=S.cardPos[0]-r.left-cw-24;y=clamp(y,76,r.height-ch-70);card.style.left=x+'px';card.style.top=y+'px';}
