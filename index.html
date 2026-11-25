@@ -1078,6 +1078,23 @@ html{scroll-behavior:smooth}
 @media (max-width:1100px){.cc-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:860px){.cc-2{grid-template-columns:minmax(0,1fr)}.cc-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.ccperf{grid-template-columns:repeat(2,minmax(0,1fr))}.ccm{grid-template-columns:repeat(2,minmax(0,1fr))}.cc-kits{grid-template-columns:1fr}}
 .en-skip{display:inline-flex;align-items:center;gap:6px}.en-skip svg{width:13px;height:13px;flex:0 0 13px}
+/* ---- v9 fixes ---- */
+.en-h0{justify-content:flex-start}
+.en-full{display:flex;align-items:center;height:30px}.en-full svg{height:100%;width:auto}
+.av-stage{margin-bottom:24px}
+/* kit cards: text uses full width when the card is narrow */
+.kc,.cck{container-type:inline-size;flex-wrap:wrap}
+.kc>div[style*="flex:1"],.cck>div[style*="flex:1"]{flex:1 1 0}
+@container (max-width:560px){
+ .kc-r{flex:1 1 100%;flex-direction:row;justify-content:space-between;align-items:center;text-align:left;padding-top:10px;margin-top:2px;border-top:1px solid var(--edge)}
+}
+/* sign out */
+.so-btn{display:inline-flex;align-items:center;gap:6px;margin-right:6px}.so-btn svg,.so-main svg{width:15px;height:15px}
+.so-box{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.so-main{display:inline-flex;align-items:center;gap:8px;border-color:rgba(255,59,92,.35)!important;color:#ff8da0!important}
+@media (max-width:640px){.so-btn span{display:none}.so-btn{padding:7px 9px}}
+@media (max-width:640px){.pp-kpis.k5>.vcc:nth-child(5){grid-column:1/-1}}
+.cc-tabs,.tabs{scrollbar-width:none}.cc-tabs::-webkit-scrollbar{display:none}
 </style>
 
 <div id="boot"><div class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="310.13 0 424.1 429.98"><path fill="#A8E01F" d="M403.97,273.21c0-157.93,72.2-171.56,162.13-171.56,22,0,43.67,1.22,63.66,5.4-18-71.16-83.64-77.69-157.26-98.37-110.31-30.99-151.66,22.86-160.93,132.85-10.24,121.46,35.5,162.73,97.25,175.66-3.16-12.52-4.85-27.03-4.85-43.97Z"/><path fill="#C6FF34" d="M571.86,107.4c-89.93,0-162.12,13.63-162.13,171.56,0,113.31,75.55,118.03,162.13,142.36,110.31,30.99,151.66-22.86,160.93-132.85,13.55-160.8-70.99-181.07-160.93-181.07Z"/></svg><div class="lbl">Assembling your team</div></div></div>
@@ -1365,6 +1382,7 @@ const I={
  kit:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7M3 12.5h18M10.5 12.5v2h3v-2"/></svg>',
  doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg>',
  expand:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg>',
+ out:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"/><path d="M10 17l-5-5 5-5M5 12h11"/></svg>',
  x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
  back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
  down:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>',
@@ -1393,7 +1411,7 @@ function toggleVMenu(e){e.stopPropagation();let m=$('#vmenu');if(m){m.remove();r
   if(b.dataset.a==='profile')openProfile();
   if(b.dataset.a==='new')openChat('identity',null,'onboarding');
   if(b.dataset.a==='replay')openEntry('auth');
-  if(b.dataset.a==='out'){try{localStorage.removeItem('qq_entered')}catch(e){}openEntry('auth');}
+  if(b.dataset.a==='out')signOut();
   m.remove();});
 }
 document.addEventListener('click',()=>{const m=$('#vmenu');if(m)m.remove();});
@@ -1459,7 +1477,7 @@ const STACK=[];
 function ovShell(o){
  const el=document.createElement('section');el.className='ov';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');
  if(o.entry!=null)el.classList.add('entry');
- el.innerHTML=o.entry!=null?'<header class="ov-h en-h"><span class="en-logo">'+LOGO_MARK+'</span>'+stepsHTML(o.entry)+'<div class="sp"></div>'+'<button class="mini ghost en-skip" onclick="'+(['openEntry(\'onboarding\')','openEntry(\'onboarding\')','openEntry(\'assessment\')','openEntry(\'kit\')','finishEntry()'][o.entry])+'">'+(['Skip to onboarding','Skip to onboarding','Skip to assessment','Skip to purchase','Skip to Command Centre'][o.entry])+' '+I.arr+'</button>'+'</header>'+(o.raw||'<div class="ov-b"><div class="wrap">'+o.body+'</div></div>'):'<header class="ov-h">'+(STACK.length?'<button class="bk" aria-label="Back">'+I.back+'</button>':'')+(o.head||'<div><h2>'+o.title+'</h2>'+(o.sub?'<div class="sub">'+o.sub+'</div>':'')+'</div>')+'<div class="sp"></div>'+(o.right||'')+'<button class="xbtn" aria-label="Close">'+I.x+'</button></header>'+(o.raw||'<div class="ov-b"><div class="wrap">'+o.body+'</div></div>');
+ el.innerHTML=o.entry===0?'<header class="ov-h en-h en-h0"><span class="en-full">'+LOGO_FULL+'</span></header>'+o.raw:o.entry!=null?'<header class="ov-h en-h"><span class="en-logo">'+LOGO_MARK+'</span>'+stepsHTML(o.entry)+'<div class="sp"></div>'+'<button class="mini ghost en-skip" onclick="'+(['openEntry(\'onboarding\')','openEntry(\'onboarding\')','openEntry(\'assessment\')','openEntry(\'kit\')','finishEntry()'][o.entry])+'">'+(['Skip to onboarding','Skip to onboarding','Skip to assessment','Skip to purchase','Skip to Command Centre'][o.entry])+' '+I.arr+'</button>'+'</header>'+(o.raw||'<div class="ov-b"><div class="wrap">'+o.body+'</div></div>'):'<header class="ov-h">'+(STACK.length?'<button class="bk" aria-label="Back">'+I.back+'</button>':'')+(o.head||'<div><h2>'+o.title+'</h2>'+(o.sub?'<div class="sub">'+o.sub+'</div>':'')+'</div>')+'<div class="sp"></div>'+(o.right||'')+'<button class="xbtn" aria-label="Close">'+I.x+'</button></header>'+(o.raw||'<div class="ov-b"><div class="wrap">'+o.body+'</div></div>');
  document.body.appendChild(el);
  const xb=$('.xbtn',el);if(xb)xb.onclick=closeAll;const bk=$('.bk',el);if(bk)bk.onclick=popOv;
  STACK.push(el);if(window.C3&&C3.pause){C3.pause(true);C3.hideCard&&C3.hideCard();}
@@ -1533,7 +1551,7 @@ function openChat(k,spec,flow,opt){
  const el=ovShell({head,raw:'<div class="chat-wrap">'+raw+'<aside class="outp" aria-label="Output"><div class="outp-h"><div class="outp-t"><span class="lbl" id="outK">Output</span><b id="outT">—</b><span id="outS"></span></div><button class="icb" id="outMax" aria-label="Expand output">'+I.expand+'</button><button class="icb" id="outX" aria-label="Close output">'+I.x+'</button></div><div class="outp-bar" id="outBar" hidden></div><div class="outp-b" id="outB"></div></aside></div>',entry:opt.entry});
  CH={k,spec,flow,el,col:$('#ccol',el),busy:false,step:0,entry:opt.entry};
  $('#outX',el).onclick=outClose;$('#outMax',el).onclick=()=>$('.chat-wrap',el).classList.toggle('max');
- el._close=()=>{CH=null;};
+ el._close=()=>{if(CH&&CH.el===el)CH=null;};
  const ta=$('#cin',el);
  ta.addEventListener('input',()=>{ta.style.height='auto';ta.style.height=Math.min(ta.scrollHeight,160)+'px';});
  ta.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
@@ -2058,6 +2076,7 @@ function customForm(kind){const t=CUSTOM_TYPES.find(x=>x[0]===kind),d=$('#drawer
  $('#cuF',d).onsubmit=e=>{e.preventDefault();const n=$('#cuN',d).value.trim();if(!n)return;CUSTOM.push({n,i:t[1],d:($('#cuU',d).value||'Custom connection')+' · read only',to:$$('.agp.on',d).map(b=>AG[b.dataset.a].n),on:1,m:'Connected · demo',custom:1,kind});closeDrawer();cxCat='custom';cxDraw();toast(n+' connected');};}
 
 /* ---------- profile ---------- */
+function signOut(){$('#vmenu')&&$('#vmenu').remove();openEntry('auth');setTimeout(()=>toast('Signed out.'),200);}
 function openProfile(){
  const used=Math.round(TOKENS.used/TOKENS.limit*100);
  const qr=(()=>{let s='';for(let y=0;y<9;y++)for(let x=0;x<9;x++){if((x*7+y*13+x*y)%3===0||((x<3||x>5)&&(y<3||y>5)&&((x%6===0||x%6===2||y%6===0||y%6===2)&&!(x>3&&x<5))))s+='<rect x="'+x*7+'" y="'+y*7+'" width="6" height="6" rx="1" fill="#C6FF34"/>';}return s;})();
@@ -2071,9 +2090,9 @@ function openProfile(){
   '<div style="display:grid;gap:16px"><div class="box"><h4>Team &amp; access</h4><div class="team">'+[['NH','Nour Halim','Founder · admin','up','Verified'],['KA','Karim Adly','Founder · admin','up','Verified'],['YF','Yasmine Fouad','Founder · 15%','hold','Proxy record']].map(m=>'<div class="mem"><span class="ph">'+m[0]+'</span><div><div style="font-weight:500;font-size:13.5px">'+m[1]+'</div><div style="font-size:12px;color:var(--graph)">'+m[2]+'</div></div><span class="r pill '+m[3]+'"><span class="d"></span>'+m[4]+'</span></div>').join('')+
   '</div><div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="mini" onclick="openChat(\'identity\',\'Collaborator and access management\')">Invite a collaborator</button><button class="mini ghost" onclick="openChat(\'identity\',\'Verification orchestration\')">Verify Yasmine</button></div></div>'+
   '<div class="box"><h4>Permissions</h4>'+[['Improvement permission','Lets QuidQuo use anonymised data to improve its models. Off by default. Refusing costs you nothing.',0],['Interrupt me on thresholds','Aether interrupts only when an escalation threshold is met.',1],['Weekly briefing','A short Monday summary from Aether.',1]].map((t,i)=>'<div class="tog"><div><div class="t">'+t[0]+'</div><div class="d">'+t[1]+'</div></div><button class="sw'+(t[2]?' on':'')+'" role="switch" aria-checked="'+(t[2]?'true':'false')+'" aria-label="'+t[0]+'"></button></div>').join('')+'</div>'+
-  '<div class="box"><h4>Your data</h4><p>Your content belongs to the venture record. You can export it, or ask Identity to delete your personal data. Deletion is a confirmed flow.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="mini" onclick="toast(\'Export prepared (demo).\')">Export my data</button><button class="mini ghost" onclick="openChat(\'identity\')">Request deletion</button><button class="mini ghost" onclick="toast(\'Signed out (demo).\')">Sign out</button></div></div>'+
+  '<div class="box"><h4>Your data</h4><p>Your content belongs to the venture record. You can export it, or ask Identity to delete your personal data. Deletion is a confirmed flow.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="mini" onclick="toast(\'Export prepared (demo).\')">Export my data</button><button class="mini ghost" onclick="openChat(\'identity\')">Request deletion</button></div></div><div class="box so-box"><div><h4>Sign out</h4><p style="margin:0">You are signed in as nour@sanad.eg on this device.</p></div><button class="btn so-main" onclick="signOut()">'+I.out+'Sign out</button></div></div>'+
   '</div></div>';
- const el=ovShell({title:'Profile & Settings',sub:'Nour Halim · Sanad',body});
+ const el=ovShell({title:'Profile & Settings',sub:'Nour Halim · Sanad',body,right:'<button class="mini ghost so-btn" onclick="signOut()">'+I.out+'<span>Sign out</span></button>'});
  $('#idc',el).onclick=()=>$('#idc',el).classList.toggle('flip');
  $$('.sw',el).forEach(s=>s.onclick=()=>{s.classList.toggle('on');s.setAttribute('aria-checked',s.classList.contains('on'));});
 }
@@ -2166,25 +2185,25 @@ function apInsets(snap){if(!window.C3||!C3.setInsets)return;const p=$('#actp'),m
  const l=(!mob&&!p.classList.contains('col'))?p.offsetWidth+28:0;C3.setInsets(l,mob?52:0,snap);$('#navhint').style.setProperty('--nh-off',(l/2)+'px');}
 
 /* ================= ENTRY SEQUENCE · Account → Consent → Onboarding → Venture Assessment → Purchase ================= */
-let LOGO_MARK='';
-const STEPS=['Account','Consent','Onboarding','Venture Assessment','Purchase'];
+let LOGO_MARK='',LOGO_FULL='';
+const STEPS=['Consent','Onboarding','Venture Assessment','Purchase'];
 const ENTRY_FOOT={2:'Identity records what you tell it, and marks what it could not verify.',3:'Gaps are recorded, never estimated. Missing measures are excluded rather than scored zero.',4:'Staffing recommends; you choose. It never completes a payment for you.'};
-function stepsHTML(cur){return '<div class="steps2">'+STEPS.map((s,i)=>'<span class="stp2 '+(i<cur?'dn':i===cur?'on':'')+'"><b>'+(i<cur?'✓':i+1)+'</b><em>'+s+'</em></span>'+(i<STEPS.length-1?'<i class="stp2-l'+(i<cur?' dn':'')+'"></i>':'')).join('')+'</div>';}
-function openEntry(step){closeAll();setTimeout(()=>{
+function stepsHTML(cur){cur-=1;return '<div class="steps2">'+STEPS.map((s,i)=>'<span class="stp2 '+(i<cur?'dn':i===cur?'on':'')+'"><b>'+(i<cur?'✓':i+1)+'</b><em>'+s+'</em></span>'+(i<STEPS.length-1?'<i class="stp2-l'+(i<cur?' dn':'')+'"></i>':'')).join('')+'</div>';}
+function openEntry(step){const old=STACK.splice(0);closeDrawer();const go=(()=>{
  if(step==='auth')return entryAuth();
  if(step==='consent')return entryConsent();
  if(step==='onboarding')return openChat('identity',null,'onboarding',{entry:2});
  if(step==='assessment')return openChat('assessment',null,'assessment',{entry:3});
- if(step==='kit')return openChat('staffing',null,'plan',{entry:4});},STACK.length?360:0);}
+ if(step==='kit')return openChat('staffing',null,'plan',{entry:4});});go();
+ old.forEach(el=>{if(el._close)el._close();el.style.zIndex=Math.max(1,(parseInt(getComputedStyle(el).zIndex)||60)-1);setTimeout(()=>el.remove(),450);});
+ if(!STACK.length&&window.C3&&C3.pause)C3.pause(false);}
 function finishEntry(msg){try{localStorage.setItem('qq_entered','1')}catch(e){}closeAll();setTimeout(()=>{if(window.C3&&C3.setInsets)apInsets(true);toast(msg||'Welcome to your Command Centre.');},400);}
 function nextEntry(step){if(CH&&CH.entry!=null)openEntry(step);else{const m={assessment:['assessment','assessment'],kit:['staffing','plan']}[step];if(m)openChat(m[0],null,m[1]);}}
 
 function entryAuth(){
- const ring=['identity','assessment','build','dealflow','market','presence'];
  const raw='<div class="auth2"><div class="auth-vis"><div class="av-stage"><div class="av-ring r1"></div><div class="av-ring r2"></div><div class="av-ring r3"></div>'+
-  ring.map((k,i)=>'<img class="av-orb" style="--a:'+(i*60)+'deg;--d:'+(i*-.9)+'s" src="'+img(k)+'" alt="">').join('')+
-  '<img class="av-ae" src="'+img('aether')+'" alt="Aether"><div class="av-ped"></div></div>'+
-  '<div class="av-copy"><div class="lbl" style="color:var(--acid)">QuidQuo</div><h2>Your venture, built and raised with a team of agents.</h2><p>Aether coordinates nine seniors that assess, build and raise alongside you. Nothing leaves without your approval.</p></div></div>'+
+    '<img class="av-ae" src="'+img('aether')+'" alt="Aether"><div class="av-ped"></div></div>'+
+  '<div class="av-copy"><div class="lbl" style="color:var(--acid)">QuidQuo</div><h2>Your venture, built and raised with a team of agents.</h2><p>Aether coordinates multiple seniors that assess, build and raise alongside you. Nothing leaves without your approval.</p></div></div>'+
   '<div class="auth-form"><div class="af-card"><div class="af-tabs" role="tablist"><button class="on" data-m="up">Create account</button><button data-m="in">Sign in</button></div>'+
   '<h1 id="afT">Create your account</h1><p class="af-sub" id="afS">Start with your venture. Assessment is free.</p>'+
   '<button class="sso"><span class="sso-i">G</span>Continue with Google</button><button class="sso"><span class="sso-i">in</span>Continue with LinkedIn</button>'+
@@ -2276,7 +2295,7 @@ function recordHTML(){const sm={v:['Verified','up'],u:['Your account','info'],c:
 
 /* ---------- boot ---------- */
 function boot(){
- renderTop();renderStats();LOGO_MARK=$('.logo .mark').innerHTML;
+ renderTop();renderStats();LOGO_MARK=$('.logo .mark').innerHTML;LOGO_FULL=$('.logo .full').innerHTML;
  $('#vbtn').addEventListener('click',toggleVMenu);
  setTimeout(()=>$('#boot').classList.add('off'),900);
  $('#gl').addEventListener('pointerdown',()=>{const h=$('#navhint');h.classList.add('dim');},{once:true});
@@ -2395,8 +2414,6 @@ const C3=window.C3={};
   const a={key,g,sp,ring,ring2,pulse,disc,dia,beam,aura,h,lift,col,ph,bob:Math.random()*6.28,hover:0,isA,pt:Math.random()};
   if(isA){
    a.waves=[0,1,2].map(i=>{const m=new THREE.Mesh(new THREE.RingGeometry(.97,1.0,128),basic(LIME,0));m.rotation.x=-Math.PI/2;m.position.y=.03;g.add(m);return {m,t:i/3};});
-   const halo=new THREE.Mesh(new THREE.TorusGeometry(.36,.012,8,80),new THREE.MeshBasicMaterial({color:LIME,transparent:true,opacity:.9,depthWrite:false,blending:AB}));halo.rotation.x=Math.PI/2;halo.position.y=lift+h*1.02;g.add(halo);a.halo=halo;
-   a.hg=glowSprite(1.3,LIME,.4);a.hg.position.y=lift+h*1.02;g.add(a.hg);
    a.core=glowSprite(.9,LIME,.45);a.core.position.y=lift+h*.47;g.add(a.core);
    a.col2=new THREE.Mesh(new THREE.CylinderGeometry(.05,.05,8,8,1,true),basic(LIME,.08));a.col2.position.y=4;g.add(a.col2);
   }
@@ -2495,7 +2512,7 @@ const C3=window.C3={};
    a.pt=(a.pt+dt*.22)%1;const ps=1+a.pt*1.6;a.pulse.scale.set(ps,ps,ps);a.pulse.material.opacity=(1-a.pt)*.45;
    a.beam.material.opacity=(a.isA?.03:.035)+a.hover*.07;a.aura.material.opacity=(a.isA?.14+Math.sin(T*1.2)*.04:0)+a.hover*.3;
    a.ring.material.opacity=.7+a.hover*.3;
-   if(a.isA){a.halo.rotation.z+=dt*.4;const pz=1+Math.sin(T*1.6)*.05;a.halo.scale.set(pz,pz,pz);a.hg.material.opacity=.32+Math.sin(T*1.6)*.1;a.core.material.opacity=.36+Math.sin(T*2)*.14;
+   if(a.isA){a.core.material.opacity=.36+Math.sin(T*2)*.14;
     a.waves.forEach(w=>{w.t=(w.t+dt*.12)%1;const s=.7+w.t*4.2;w.m.scale.set(s,s,s);w.m.material.opacity=(1-w.t)*.35;});}
   });
   syn.forEach(s=>{const hov=S.hover===s.k||S.hover==='aether';s.line.material.opacity+=((hov?.7:.2)-s.line.material.opacity)*.1;
